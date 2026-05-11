@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniMate AI / 牛小匠课代表 — Brand Book</title>
+  <meta name="description" content="UniMate AI / 牛小匠课代表 设计规范与品牌手册。Smart but playful — 一个面向大学生的 AI 学习陪伴产品。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tokens/tokens.css" />
+  <link rel="icon" type="image/png" href="assets/mascot/default.png" />
+  <style>
+    /* ─── Brand book–local layout (NOT production tokens) ─── */
+    body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--um-space-12) var(--um-space-8) var(--um-space-20);
+    }
+
+    h1, h2, h3, h4 { margin: 0; line-height: var(--um-lh-tight); color: var(--um-ink); }
+    p { margin: 0; color: var(--um-ink-soft); line-height: var(--um-lh-relaxed); }
+
+    .eyebrow {
+      font-size: var(--um-fs-eyebrow);
+      font-weight: var(--um-fw-bold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--um-coral);
+    }
+
+    /* ─── Hero ─────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--um-space-10);
+      align-items: center;
+      padding: var(--um-space-12) var(--um-space-10);
+      background: var(--um-white);
+      border-radius: var(--um-radius-xl);
+      box-shadow: var(--um-shadow-md);
+      margin-bottom: var(--um-space-12);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 90% 10%, var(--um-wash-coral) 0%, transparent 35%),
+        radial-gradient(circle at 0% 100%, var(--um-wash-mint) 0%, transparent 30%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-mascot {
+      width: 160px;
+      height: 160px;
+      border-radius: var(--um-radius-full);
+      background: var(--um-wash-sunshine);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--um-shadow-md);
+    }
+    .hero-mascot img { width: 75%; height: auto; }
+    .hero h1 { font-size: var(--um-fs-page); font-weight: var(--um-fw-extrabold); margin-bottom: var(--um-space-2); }
+    .hero h1 .zh { display: block; font-size: 36px; margin-top: 4px; }
+    .hero .tagline { font-size: var(--um-fs-body-lg); color: var(--um-slate); margin-bottom: var(--um-space-6); }
+    .hero .squiggle { font-family: var(--um-font-accent); color: var(--um-coral); font-size: 22px; margin-left: 8px; transform: rotate(-6deg); display: inline-block; }
+    .hero-pills { display: flex; gap: var(--um-space-3); flex-wrap: wrap; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--um-radius-full);
+      font-size: var(--um-fs-body-sm); font-weight: var(--um-fw-bold);
+      background: var(--um-white); border: 1.5px solid var(--um-hairline);
+    }
+    .hero-pill.coral     { background: var(--um-wash-coral);     color: var(--um-coral);     border-color: transparent; }
+    .hero-pill.mint      { background: var(--um-wash-mint);      color: #0f9b73;             border-color: transparent; }
+    .hero-pill.sunshine  { background: var(--um-wash-sunshine);  color: #b07b00;             border-color: transparent; }
+    .hero-pill.purple    { background: var(--um-wash-purple);    color: var(--um-purple);    border-color: transparent; }
+
+    /* ─── Section ──────────────────────────────────────── */
+    .section {
+      background: var(--um-white);
+      border-radius: var(--um-radius-lg);
+      padding: var(--um-space-10);
+      margin-bottom: var(--um-space-8);
+      box-shadow: var(--um-shadow-sm);
+      border: 1px solid rgba(31,27,45,0.04);
+    }
+    .section-head { display: flex; align-items: baseline; gap: var(--um-space-3); margin-bottom: var(--um-space-8); }
+    .section-num {
+      font-size: var(--um-fs-body-sm); font-weight: var(--um-fw-bold);
+      color: var(--um-coral); background: var(--um-wash-coral);
+      padding: 4px 10px; border-radius: var(--um-radius-sm);
+    }
+    .section-title { font-size: 24px; font-weight: var(--um-fw-bold); }
+    .section-sub { font-size: var(--um-fs-body-sm); color: var(--um-slate); margin-left: auto; }
+
+    .grid { display: grid; gap: var(--um-space-6); }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+    .grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+    .grid.cols-8 { grid-template-columns: repeat(8, 1fr); }
+    @media (max-width: 900px) {
+      .grid.cols-3, .grid.cols-4, .grid.cols-5, .grid.cols-6, .grid.cols-8 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .label { font-size: var(--um-fs-caption); color: var(--um-slate); margin-top: 8px; font-weight: var(--um-fw-medium); }
+    .label code { font-family: 'SF Mono', Menlo, monospace; color: var(--um-ink); background: var(--um-wash-purple); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+
+    /* ─── Section 01: Colors ───────────────────────────── */
+    .swatch {
+      aspect-ratio: 1.4;
+      border-radius: var(--um-radius-md);
+      box-shadow: var(--um-shadow-sm);
+    }
+    .swatch.lite { border: 1px solid var(--um-hairline); }
+    .swatch-name { font-size: var(--um-fs-body); font-weight: var(--um-fw-bold); margin-top: 10px; color: var(--um-ink); }
+
+    .gradient-card { aspect-ratio: 2; border-radius: var(--um-radius-lg); box-shadow: var(--um-shadow-md); }
+
+    /* ─── Section 02: Typography ───────────────────────── */
+    .type-stack { display: grid; gap: 18px; }
+    .type-row { display: grid; grid-template-columns: 80px 1fr auto; align-items: baseline; gap: var(--um-space-6); }
+    .type-row .name { font-size: var(--um-fs-body-sm); color: var(--um-slate); font-weight: var(--um-fw-bold); }
+    .type-row .meta { font-size: var(--um-fs-caption); color: var(--um-stone); }
+
+    /* ─── Section 03: Mascot ───────────────────────────── */
+    .mascot-grid { grid-template-columns: repeat(8, 1fr); gap: var(--um-space-4); }
+    @media (max-width: 1100px) { .mascot-grid { grid-template-columns: repeat(4, 1fr); } }
+    .mascot-cell {
+      aspect-ratio: 1;
+      border-radius: var(--um-radius-md);
+      display: grid; place-items: center;
+      position: relative;
+      transition: transform var(--um-dur-hover) var(--um-ease-spring);
+    }
+    .mascot-cell:hover { transform: translateY(-4px); }
+    .mascot-cell img { width: 70%; height: auto; }
+    .mascot-cell .ring {
+      position: absolute; inset: 8px;
+      border-radius: var(--um-radius-md);
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+    .mascot-state { font-size: var(--um-fs-body-sm); font-weight: var(--um-fw-bold); margin-top: 10px; }
+    .mascot-meta { font-size: var(--um-fs-caption); color: var(--um-slate); }
+    .m-default     { background: var(--um-wash-sunshine); }
+    .m-happy       { background: var(--um-wash-mint); }
+    .m-studying    { background: var(--um-wash-purple); }
+    .m-thinking    { background: var(--um-wash-bubblegum); }
+    .m-ai-analyzing{ background: var(--um-wash-purple); }
+    .m-charging    { background: var(--um-wash-coral); }
+    .m-tired       { background: #2A2640; }
+    .m-tired img   { filter: invert(1); }
+    .m-deadline    { background: var(--um-wash-coral); }
+    .m-champion    { background: var(--um-wash-sunshine); }
+
+    /* ─── Section 04: Buttons ──────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      height: 52px; padding: 0 24px 0 8px;
+      border: none;
+      border-radius: var(--um-radius-full);
+      font-size: var(--um-fs-button); font-weight: var(--um-fw-bold);
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform var(--um-dur-hover) var(--um-ease-standard),
+                  box-shadow var(--um-dur-hover) var(--um-ease-standard);
+      color: var(--um-white);
+    }
+    /* Primary 按钮 mascot icon — 白圆 + 完整牛小匠头（含角） */
+    .btn .m {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--um-white);
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(31,27,45,0.12);
+      overflow: visible;
+    }
+    .btn .m img { width: 32px; height: auto; display: block; }
+    /* Medium 变体（AI 生成 / 立即升级 这种带 emoji 前缀的小一号） */
+    .btn.btn-md { height: 44px; padding: 0 22px; gap: 6px; font-size: 14px; }
+    .btn.btn-md .ico-emoji { font-size: 16px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn-coral     { background: var(--um-grad-coral);     box-shadow: var(--um-glow-coral); }
+    .btn-bubblegum { background: var(--um-wash-bubblegum); color: var(--um-bubblegum); box-shadow: 0 6px 16px rgba(255,107,169,0.18); }
+    .btn-sunshine  { background: var(--um-wash-sunshine);  color: #b07b00; box-shadow: 0 6px 16px rgba(255,212,59,0.22); }
+    .btn-mint      { background: var(--um-grad-mint);      box-shadow: var(--um-glow-mint); }
+    .btn-purple    { background: var(--um-grad-purple);    box-shadow: var(--um-glow-purple); }
+    .btn-secondary {
+      background: var(--um-white); color: var(--um-ink);
+      border: 1.5px solid var(--um-hairline);
+      box-shadow: var(--um-shadow-sm);
+      height: 44px; padding: 0 22px; gap: 6px; font-size: 14px;
+    }
+    .btn-ghost { background: transparent; color: var(--um-ink-soft); height: 44px; padding: 0 18px; }
+    .btn-disabled { background: var(--um-stone); color: var(--um-white); opacity: 0.6; cursor: not-allowed; box-shadow: none; }
+    .btn-disabled:hover { transform: none; }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: var(--um-space-4); align-items: center; }
+    .btn-stack { display: grid; gap: var(--um-space-4); }
+    .btn-state-label { font-size: var(--um-fs-caption); color: var(--um-slate); font-weight: var(--um-fw-bold); margin-bottom: 6px; }
+
+    /* ─── Section 05: Inputs ───────────────────────────── */
+    .input {
+      width: 100%; height: 48px;
+      padding: 0 16px;
+      border-radius: var(--um-radius-md);
+      border: 1.5px solid #E5E7EB;
+      background: var(--um-white);
+      font-family: inherit; font-size: var(--um-fs-body);
+      box-shadow: var(--um-shadow-sm);
+      color: var(--um-ink);
+      transition: border-color var(--um-dur-hover), box-shadow var(--um-dur-hover);
+    }
+    .input::placeholder { color: var(--um-stone); }
+    .input:focus { outline: none; border-color: var(--um-coral); box-shadow: 0 0 0 4px rgba(255,122,102,0.12); }
+    .input.focus { border-color: var(--um-coral); box-shadow: 0 0 0 4px rgba(255,122,102,0.12); }
+    .input.error { border-color: var(--um-coral); background: var(--um-wash-coral); }
+    .input-wrap { position: relative; }
+    .input-wrap .icon-l, .input-wrap .icon-r {
+      position: absolute; top: 50%; transform: translateY(-50%); width: 22px; height: 22px;
+    }
+    .input-wrap .icon-l { left: 14px; }
+    .input-wrap .icon-r { right: 14px; }
+    .input-wrap.with-icon-l input { padding-left: 44px; }
+    .input-wrap.with-icon-r input { padding-right: 44px; }
+    .textarea {
+      width: 100%;
+      height: 120px;
+      padding: 12px 16px 32px 16px;   /* 留底部空间给 counter */
+      border-radius: var(--um-radius-md);
+      border: 1.5px solid #E5E7EB;
+      font-family: inherit; font-size: var(--um-fs-body);
+      resize: none;                   /* 关掉 resize 把手 防止跟 counter 抢位置 */
+      box-shadow: var(--um-shadow-sm);
+      display: block;
+    }
+    .textarea-wrap { position: relative; }
+    .textarea-wrap .counter {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      font-size: var(--um-fs-caption);
+      color: var(--um-slate);
+      pointer-events: none;
+      background: linear-gradient(to right, transparent 0, var(--um-white) 12px);
+      padding-left: 16px;
+    }
+    .textarea-wrap .counter .mini-mascot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--um-white);
+      display: inline-grid; place-items: center;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .textarea-wrap .counter .mini-mascot img { width: 100%; }
+
+    /* ─── Section 06: Chips & Tags ─────────────────────── */
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 32px; padding: 0 14px;
+      border-radius: var(--um-radius-full);
+      background: var(--um-white);
+      border: 1.5px solid var(--um-hairline);
+      font-size: 13px; font-weight: var(--um-fw-semibold);
+      color: var(--um-ink-soft);
+    }
+    .chip.coral     { background: var(--um-wash-coral);     color: var(--um-coral);    border-color: transparent; }
+    .chip.bubblegum { background: var(--um-wash-bubblegum); color: var(--um-bubblegum);border-color: transparent; }
+    .chip.sunshine  { background: var(--um-wash-sunshine);  color: #b07b00;            border-color: transparent; }
+    .chip.mint      { background: var(--um-wash-mint);      color: #0f9b73;            border-color: transparent; }
+    .chip.purple    { background: var(--um-wash-purple);    color: var(--um-purple);   border-color: transparent; }
+    .chip.gray      { background: #F4F1EA;                  color: var(--um-slate);    border-color: transparent; }
+
+    .sticker-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: var(--um-radius-full);
+      font-weight: var(--um-fw-bold);
+      transform: rotate(-3deg);
+      box-shadow: var(--um-shadow-sticker);
+      font-size: var(--um-fs-body-sm);
+      letter-spacing: 0.04em;
+    }
+    .sticker-coral    { background: var(--um-coral);    color: var(--um-white); }
+    .sticker-sunshine { background: var(--um-sunshine); color: var(--um-ink); }
+    .sticker-mint     { background: var(--um-mint);     color: var(--um-ink); }
+    .sticker-purple   { background: var(--um-purple);   color: var(--um-white); }
+
+    /* ─── Section 07: Icons ────────────────────────────── */
+    .icon-cell {
+      aspect-ratio: 1;
+      border-radius: var(--um-radius-md);
+      background: var(--um-canvas);
+      border: 1px solid var(--um-hairline);
+      display: grid; place-items: center;
+      color: var(--um-ink-soft);
+    }
+    .icon-cell svg { width: 24px; height: 24px; }
+    .icon-cell.filled { background: var(--um-wash-coral); color: var(--um-coral); border-color: transparent; }
+
+    /* ─── Section 08: Cards (Feature) ──────────────────── */
+    .feature-card {
+      padding: var(--um-space-6);
+      border-radius: var(--um-radius-lg);
+      box-shadow: var(--um-shadow-md);
+      display: flex; flex-direction: column; gap: var(--um-space-3);
+      min-height: 220px;
+      position: relative;
+      transition: transform var(--um-dur-card) var(--um-ease-standard);
+    }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-card .mascot-thumb {
+      width: 64px; height: 64px;
+      border-radius: var(--um-radius-md);
+      background: var(--um-white);
+      display: grid; place-items: center;
+      box-shadow: var(--um-shadow-sm);
+      margin-bottom: var(--um-space-2);
+    }
+    .feature-card .mascot-thumb img { width: 80%; }
+    .feature-card h4 { font-size: var(--um-fs-card); font-weight: var(--um-fw-bold); }
+    .feature-card .desc { font-size: var(--um-fs-body-sm); color: var(--um-slate); line-height: var(--um-lh-relaxed); }
+    .feature-card .footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+    .feature-card.lecture    { background: var(--um-white); }
+    .feature-card.quiz       { background: var(--um-wash-bubblegum); }
+    .feature-card.essay      { background: var(--um-wash-sunshine); }
+    .feature-card.assignment { background: var(--um-wash-coral); }
+    .feature-card.planner    { background: var(--um-wash-mint); }
+    .feature-card .arrow { font-size: 20px; color: var(--um-ink-soft); }
+
+    /* ─── Section 09: Progress ─────────────────────────── */
+    .progress {
+      position: relative;
+      height: 18px;
+      border-radius: var(--um-radius-full);
+      background: #F4F1EA;
+      overflow: visible;
+    }
+    .progress .bar {
+      position: relative;
+      height: 100%;
+      border-radius: var(--um-radius-full);
+      width: 68%;
+      /* Candy-cane 糖果条纹：Coral 渐变 + 半透明斜线叠加 */
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.22) 0,
+          rgba(255,255,255,0.22) 8px,
+          transparent 8px,
+          transparent 16px
+        ),
+        var(--um-grad-coral);
+      box-shadow: inset 0 -2px 4px rgba(255,91,126,0.25);
+      animation: stripe-march 1.6s linear infinite;
+    }
+    @keyframes stripe-march {
+      from { background-position: 0 0, 0 0; }
+      to   { background-position: 22px 0, 0 0; }
+    }
+    .progress .mascot-tracker {
+      position: absolute;
+      left: 68%;
+      top: 50%;
+      transform: translate(-50%, -65%);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--um-white);
+      display: grid; place-items: center;
+      box-shadow: 0 4px 12px rgba(31,27,45,0.18);
+      border: 2.5px solid var(--um-coral);
+      overflow: visible;
+    }
+    .progress .mascot-tracker img {
+      width: 110%;
+      max-width: none;
+      transform: translateY(-2px);  /* 让角和墨镜露出来 */
+    }
+
+    .step-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--um-space-4); position: relative; padding: var(--um-space-4) 0; }
+    .step-row::before {
+      content: ''; position: absolute; left: 12.5%; right: 12.5%; top: 50%;
+      height: 2px; background: var(--um-hairline);
+      z-index: 0;
+    }
+    .step { display: grid; place-items: center; gap: 8px; position: relative; z-index: 1; }
+    .step .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: var(--um-fw-bold); background: var(--um-white); border: 2px solid var(--um-hairline); color: var(--um-slate); }
+    .step.completed .dot { background: var(--um-mint); border-color: var(--um-mint); color: var(--um-white); }
+    .step.active .dot { background: var(--um-coral); border-color: var(--um-coral); color: var(--um-white); }
+    .step .lbl { font-size: var(--um-fs-body-sm); color: var(--um-slate); font-weight: var(--um-fw-semibold); }
+    .step.active .lbl, .step.completed .lbl { color: var(--um-ink); }
+
+    /* ─── Section 10: Alerts ───────────────────────────── */
+    .alert {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px 16px; border-radius: var(--um-radius-md);
+      font-size: var(--um-fs-body-sm);
+    }
+    .alert .ico { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; color: var(--um-white); font-weight: var(--um-fw-bold); }
+    .alert .msg { flex: 1; }
+    .alert.success { background: var(--um-wash-mint); }
+    .alert.success .ico { background: var(--um-mint); }
+    .alert.warning { background: var(--um-wash-sunshine); color: var(--um-ink); }
+    .alert.warning .ico { background: var(--um-sunshine); color: var(--um-ink); }
+    .alert.error   { background: var(--um-wash-coral); }
+    .alert.error   .ico { background: var(--um-coral); }
+    .alert.info    { background: var(--um-wash-purple); }
+    .alert.info    .ico { background: var(--um-purple); }
+
+    /* ─── Section 11: Modal ────────────────────────────── */
+    .modal {
+      max-width: 380px; padding: var(--um-space-8);
+      background: var(--um-white);
+      border-radius: var(--um-radius-lg);
+      box-shadow: var(--um-shadow-lg);
+      position: relative;
+    }
+    .modal h4 { font-size: var(--um-fs-card); font-weight: var(--um-fw-bold); margin-bottom: 8px; }
+    .modal .upload-zone {
+      border: 2px dashed var(--um-stone);
+      border-radius: var(--um-radius-md);
+      padding: 32px 16px;
+      text-align: center;
+      background: var(--um-canvas);
+      margin: var(--um-space-4) 0;
+      position: relative;
+    }
+    .modal .upload-zone .mascot-corner {
+      position: absolute; bottom: -4px; right: -4px;
+      width: 56px; height: 56px;
+    }
+    .modal .upload-zone p { font-size: var(--um-fs-body-sm); }
+
+    /* ─── Section 12: Tooltip ──────────────────────────── */
+    .tooltip {
+      display: inline-block;
+      background: var(--um-ink); color: var(--um-canvas);
+      padding: 8px 14px; border-radius: var(--um-radius-md);
+      font-size: var(--um-fs-body-sm); position: relative;
+    }
+    .tooltip::after {
+      content: ''; position: absolute; bottom: -6px; left: 24px;
+      border: 6px solid transparent; border-top-color: var(--um-ink); border-bottom-width: 0;
+    }
+    .tooltip-wrap { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .tooltip-wrap .peek { width: 28px; height: 28px; margin-left: 18px; transform: translateY(-4px); }
+
+    /* ─── Section 13: Spacing scale ────────────────────── */
+    .spacing-row { display: flex; align-items: end; gap: 8px; }
+    .spacing-row .bar {
+      background: var(--um-coral); border-radius: 4px 4px 0 0;
+    }
+
+    /* ─── Section 14: Radius ───────────────────────────── */
+    .radius-row { display: grid; grid-template-columns: repeat(6,1fr); gap: var(--um-space-4); }
+    .radius-cell {
+      aspect-ratio: 1.4; background: var(--um-grad-purple);
+      display: grid; place-items: end center;
+      padding-bottom: 12px; color: var(--um-white);
+      font-weight: var(--um-fw-bold); font-size: var(--um-fs-caption);
+    }
+
+    /* ─── Section 15: Shadow ───────────────────────────── */
+    .shadow-cell {
+      aspect-ratio: 1.6;
+      background: var(--um-white);
+      border-radius: var(--um-radius-md);
+      display: grid; place-items: center;
+      color: var(--um-slate);
+      font-weight: var(--um-fw-bold); font-size: var(--um-fs-body-sm);
+    }
+    .shadow-cell.sm { box-shadow: var(--um-shadow-sm); }
+    .shadow-cell.md { box-shadow: var(--um-shadow-md); }
+    .shadow-cell.lg { box-shadow: var(--um-shadow-lg); }
+    .shadow-cell.sticker { box-shadow: var(--um-shadow-sticker); border: 2px solid var(--um-ink); }
+
+    /* ─── Section 16: Navigation preview ───────────────── */
+    .topbar {
+      display: flex; align-items: center; gap: 24px;
+      padding: 12px 20px; background: var(--um-white);
+      border-radius: var(--um-radius-md); box-shadow: var(--um-shadow-sm);
+    }
+    .topbar .lockup { display: flex; align-items: center; gap: 10px; font-weight: var(--um-fw-bold); }
+    .topbar .lockup img { width: 32px; }
+    .topbar nav { display: flex; gap: 18px; }
+    .topbar nav a { font-size: var(--um-fs-body-sm); font-weight: var(--um-fw-semibold); color: var(--um-slate); }
+    .topbar nav a.active { color: var(--um-coral); position: relative; }
+    .topbar nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--um-coral); border-radius: 2px; }
+    .topbar .right { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+
+    .bottombar {
+      display: flex; align-items: center; justify-content: space-around;
+      padding: 8px 16px;
+      background: var(--um-white);
+      border-radius: var(--um-radius-full);
+      box-shadow: var(--um-shadow-md);
+      max-width: 380px;
+    }
+    .bottombar .item { display: grid; place-items: center; gap: 2px; font-size: 11px; color: var(--um-slate); }
+    .bottombar .item.active { color: var(--um-coral); }
+    .bottombar .ai-fab {
+      width: 56px; height: 56px;
+      background: var(--um-grad-coral);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      box-shadow: var(--um-glow-coral);
+      transform: translateY(-12px);
+      position: relative;
+    }
+    .bottombar .ai-fab::before { content: '✨'; position: absolute; top: -4px; right: -4px; font-size: 18px; }
+    .bottombar .ai-fab img { width: 60%; filter: brightness(0) invert(1); }
+
+    /* ─── Section 17: Page-level demo ──────────────────── */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--um-space-4); }
+    .stat {
+      padding: var(--um-space-6);
+      background: var(--um-white);
+      border-radius: var(--um-radius-lg);
+      box-shadow: var(--um-shadow-sm);
+      text-align: center;
+    }
+    .stat .num { font-size: 36px; font-weight: var(--um-fw-extrabold); }
+    .stat.coral .num    { color: var(--um-coral); }
+    .stat.mint .num     { color: var(--um-mint); }
+    .stat.purple .num   { color: var(--um-purple); }
+    .stat.sunshine .num { color: #b07b00; }
+    .stat .lbl { font-size: var(--um-fs-body-sm); color: var(--um-slate); margin-top: 4px; }
+
+    .streak-card {
+      background: var(--um-wash-coral);
+      padding: var(--um-space-6);
+      border-radius: var(--um-radius-lg);
+      display: flex; align-items: center; gap: var(--um-space-4);
+      position: relative;
+    }
+    .streak-card .flame { font-size: 36px; }
+    .streak-card .num { font-size: 28px; font-weight: var(--um-fw-extrabold); color: var(--um-coral); }
+    .streak-card .squiggle {
+      font-family: var(--um-font-accent); color: var(--um-ink);
+      font-size: 22px; transform: rotate(-8deg); display: inline-block;
+      background: var(--um-sunshine); padding: 2px 12px; border-radius: 8px;
+      margin-left: auto;
+    }
+    .streak-card .mascot-cap { width: 48px; }
+
+    /* ─── Section 18: Voice / microcopy ────────────────── */
+    .voice-card { background: var(--um-canvas); padding: var(--um-space-6); border-radius: var(--um-radius-md); border: 1px dashed var(--um-stone); }
+    .voice-card .quote { font-size: var(--um-fs-body-lg); color: var(--um-ink); font-weight: var(--um-fw-semibold); }
+    .voice-card .meta { font-size: var(--um-fs-caption); color: var(--um-slate); margin-top: 8px; }
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--um-space-4); }
+
+    /* ─── Section 19: Do & Don't ───────────────────────── */
+    .do-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--um-space-6); }
+    .do-card { padding: var(--um-space-6); border-radius: var(--um-radius-lg); }
+    .do-card.do  { background: var(--um-wash-mint); }
+    .do-card.no  { background: var(--um-wash-coral); }
+    .do-card h4 { display: flex; align-items: center; gap: 8px; font-size: var(--um-fs-card); margin-bottom: 12px; }
+    .do-card ul { margin: 0; padding-left: 20px; color: var(--um-ink-soft); }
+    .do-card li { line-height: var(--um-lh-relaxed); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      text-align: center; padding: var(--um-space-12) 0;
+      color: var(--um-slate); font-size: var(--um-fs-body-sm);
+    }
+    footer img { width: 40px; vertical-align: middle; margin-right: 8px; }
+
+    /* ─── TOC ─────────────────────────────────────────── */
+    .toc {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,254,247,0.95);
+      backdrop-filter: blur(12px);
+      padding: 12px var(--um-space-6);
+      border-radius: var(--um-radius-full);
+      margin-bottom: var(--um-space-8);
+      box-shadow: var(--um-shadow-md);
+      display: flex; gap: 6px; overflow-x: auto;
+      font-size: 12px; font-weight: var(--um-fw-semibold);
+    }
+    .toc a {
+      padding: 6px 12px; border-radius: var(--um-radius-full);
+      color: var(--um-slate); white-space: nowrap;
+    }
+    .toc a:hover { background: var(--um-wash-coral); color: var(--um-coral); }
+
+    /* ─── Section 00: Logo System ──────────────────────── */
+    .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--um-space-6); }
+    .logo-card {
+      background: var(--um-canvas);
+      border-radius: var(--um-radius-lg);
+      padding: var(--um-space-8);
+      border: 1px solid var(--um-hairline);
+      display: flex; flex-direction: column; gap: var(--um-space-4);
+      min-height: 240px;
+    }
+    .logo-card .logo-stage {
+      flex: 1;
+      display: grid; place-items: center;
+      min-height: 140px;
+    }
+    .logo-card .logo-stage img { max-width: 100%; max-height: 200px; height: auto; }
+    .logo-card.dark { background: var(--um-ink); }
+    .logo-card.dark .meta-name { color: var(--um-canvas); }
+    .logo-card.dark .meta-desc { color: var(--um-stone); }
+    .logo-card .meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .logo-card .meta-name { font-size: var(--um-fs-card); font-weight: var(--um-fw-bold); }
+    .logo-card .meta-tag {
+      font-size: 11px; font-weight: var(--um-fw-bold);
+      padding: 4px 10px; border-radius: var(--um-radius-full);
+      background: var(--um-wash-mint); color: #0f9b73;
+      letter-spacing: 0.04em;
+    }
+    .logo-card .meta-desc { font-size: var(--um-fs-body-sm); color: var(--um-slate); line-height: var(--um-lh-relaxed); }
+
+    .clear-space-demo {
+      position: relative; padding: 32px;
+      background: repeating-linear-gradient(45deg, var(--um-wash-coral) 0 6px, transparent 6px 12px);
+      border-radius: var(--um-radius-md);
+      display: grid; place-items: center;
+    }
+    .clear-space-demo .inner {
+      background: var(--um-canvas);
+      padding: 12px 24px;
+      border-radius: var(--um-radius-sm);
+    }
+    .clear-space-demo img { height: 48px; width: auto; display: block; }
+
+    .bg-dont {
+      padding: 24px; border-radius: var(--um-radius-md);
+      display: grid; place-items: center; min-height: 100px;
+      position: relative;
+    }
+    .bg-dont::before {
+      content: '✕'; position: absolute; top: 8px; right: 12px;
+      color: var(--um-coral); font-weight: var(--um-fw-extrabold); font-size: 18px;
+    }
+    .bg-dont img { height: 36px; width: auto; opacity: 0.95; }
+  </style>
+</head>
+<body>
+
+  <!-- ═════════════════════════ HERO ═════════════════════════ -->
+  <header class="hero">
+    <div style="grid-column: 1 / -1; display:flex; flex-direction:column; align-items:flex-start; gap:var(--um-space-4)">
+      <div class="eyebrow">Brand Book v0.2 · 2026-05-11</div>
+      <img src="assets/logo/horizontal.png" alt="UniMate AI 牛小匠课代表" style="max-width:520px; width:100%; height:auto" />
+      <p class="tagline" style="margin-top:8px">面向大学生的 AI 学习陪伴产品 · Brand &amp; UI System<span class="squiggle">Smarter Study, Better Future ↘</span></p>
+      <div class="hero-pills">
+        <span class="hero-pill coral">🐮 AI 助手</span>
+        <span class="hero-pill mint">⚡ 智能高效</span>
+        <span class="hero-pill sunshine">🎓 学习伙伴</span>
+        <span class="hero-pill purple">🪄 GPA UP!</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═════════════════════════ TOC ═════════════════════════ -->
+  <nav class="toc">
+    <a href="#logo">00 Logo</a>
+    <a href="#colors">01 Colors</a>
+    <a href="#typography">02 Typography</a>
+    <a href="#mascot">03 Mascot</a>
+    <a href="#buttons">04 Buttons</a>
+    <a href="#inputs">05 Inputs</a>
+    <a href="#chips">06 Chips</a>
+    <a href="#icons">07 Icons</a>
+    <a href="#cards">08 Cards</a>
+    <a href="#progress">09 Progress</a>
+    <a href="#alerts">10 Alerts</a>
+    <a href="#modal">11 Modal</a>
+    <a href="#tooltip">12 Tooltip</a>
+    <a href="#spacing">13 Spacing</a>
+    <a href="#radius">14 Radius</a>
+    <a href="#shadow">15 Shadow</a>
+    <a href="#navigation">16 Navigation</a>
+    <a href="#dashboard">17 Dashboard</a>
+    <a href="#voice">18 Voice</a>
+    <a href="#dos">19 Do & Don't</a>
+  </nav>
+
+  <!-- 00 ─ LOGO SYSTEM ─────────────────────────────────────── -->
+  <section class="section" id="logo">
+    <div class="section-head"><span class="section-num">00</span><span class="section-title">Logo · 标志系统</span><span class="section-sub">4 个变体 · 一物一用 · 别混用</span></div>
+
+    <p style="margin-bottom:var(--um-space-6)">每个变体有 <b>固定使用场景</b>，选错=品牌识别度打折。优先选最贴合载体的那一个，<b>不要把横版强塞进 App icon 槽位、也不要把全身版用在 16px favicon</b>。</p>
+
+    <div class="logo-grid">
+      <!-- Horizontal -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-white); border-radius:var(--um-radius-md); padding:24px"><img src="assets/logo/horizontal.png" alt="Horizontal lockup"/></div>
+        <div class="meta-row">
+          <span class="meta-name">Horizontal · 主横版</span>
+          <span class="meta-tag">PRIMARY</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：网站头部 / 文档头 / 邮件签名 / PPT 封面 / 印刷物料 / 媒体露出<br/>
+          <b>最小宽度</b>：160px（再小读不清 mascot 细节）<br/>
+          <b>文件</b>：<code>assets/logo/horizontal.png</code>
+        </div>
+      </div>
+
+      <!-- Compact -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-white); border-radius:var(--um-radius-md); padding:24px"><img src="assets/logo/compact.png" alt="Compact lockup" style="max-height:120px"/></div>
+        <div class="meta-row">
+          <span class="meta-name">Compact · 横版紧凑（中英堆叠）</span>
+          <span class="meta-tag" style="background:var(--um-wash-purple);color:var(--um-purple)">UI</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：导航栏 logo 槽位 / Footer / 移动端 header / 名片 / 邀请函<br/>
+          <b>最小宽度</b>：120px<br/>
+          <b>文件</b>：<code>assets/logo/compact.png</code>
+        </div>
+      </div>
+
+      <!-- App Icon -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-white); border-radius:var(--um-radius-md); padding:24px"><img src="assets/logo/app-icon.png" alt="App icon"/></div>
+        <div class="meta-row">
+          <span class="meta-name">App Icon · 圆角方形容器</span>
+          <span class="meta-tag" style="background:var(--um-wash-coral);color:var(--um-coral)">APP / PWA</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：iOS / Android app icon / PWA 桌面图标 / favicon (256+)<br/>
+          <b>容器</b>：Coral 渐变方形 + 28% 圆角 + 内嵌 mascot 头<br/>
+          <b>文件</b>：<code>assets/logo/app-icon.png</code>
+        </div>
+      </div>
+
+      <!-- Full body -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-white); border-radius:var(--um-radius-md); padding:16px"><img src="assets/logo/fullbody.png" alt="Full body lockup" style="max-height:260px"/></div>
+        <div class="meta-row">
+          <span class="meta-name">Full Body · 全身 + 文字</span>
+          <span class="meta-tag" style="background:var(--um-wash-sunshine);color:#b07b00">MARKETING</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：营销 banner / Hero illustration / 404 / Empty state / 社媒头图<br/>
+          <b>最小高度</b>：240px（要看清 hoodie 细节）<br/>
+          <b>文件</b>：<code>assets/logo/fullbody.png</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear space + min size + bg rules -->
+    <div style="display:grid; grid-template-columns: 1fr 2fr; gap:var(--um-space-6); margin-top:var(--um-space-8)">
+      <div>
+        <div class="btn-state-label">CLEAR SPACE · 安全间距</div>
+        <div class="clear-space-demo">
+          <div class="inner"><img src="assets/logo/horizontal.png" alt=""/></div>
+        </div>
+        <div class="label" style="margin-top:8px">Logo 周围保留 ≥ <b>mascot 头高度的 50%</b> 留白，禁止文字 / 图形挤压。</div>
+      </div>
+
+      <div>
+        <div class="btn-state-label">背景使用规则</div>
+        <div class="grid cols-4">
+          <div>
+            <div class="bg-dont" style="background:var(--um-canvas)" data-ok>
+              <img src="assets/logo/horizontal.png" alt=""/>
+            </div>
+            <div class="label">✅ Warm Canvas <code>#FFFEF7</code></div>
+          </div>
+          <div>
+            <div class="bg-dont" style="background:var(--um-white)" data-ok>
+              <img src="assets/logo/horizontal.png" alt=""/>
+            </div>
+            <div class="label">✅ White</div>
+          </div>
+          <div>
+            <div class="bg-dont" style="background:var(--um-coral)">
+              <img src="assets/logo/horizontal.png" alt=""/>
+            </div>
+            <div class="label">❌ 高饱和品牌色背景（识别度差）</div>
+          </div>
+          <div>
+            <div class="bg-dont" style="background:linear-gradient(135deg,#222,#444)">
+              <img src="assets/logo/horizontal.png" alt=""/>
+            </div>
+            <div class="label">❌ 暗色背景（mascot 主体是黑，会糊）</div>
+          </div>
+        </div>
+        <div class="label" style="margin-top:12px">📌 暗色背景版 logo（白色 mascot 描边版）暂未做，需要时让设计师补一版反白。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 ─ COLORS ──────────────────────────────────────────── -->
+  <section class="section" id="colors">
+    <div class="section-head"><span class="section-num">01</span><span class="section-title">Colors · 色彩系统</span><span class="section-sub">5 主色 / 7 中性 / 5 wash / 5 渐变</span></div>
+
+    <div style="font-size:var(--um-fs-eyebrow);font-weight:var(--um-fw-bold);color:var(--um-slate);margin-bottom:8px;letter-spacing:.1em">BRAND COLORS · 品牌色</div>
+    <div class="grid cols-5">
+      <div><div class="swatch" style="background:var(--um-coral)"></div><div class="swatch-name">Coral</div><div class="label">Main CTA · Deadline · <code>#FF7A66</code></div></div>
+      <div><div class="swatch" style="background:var(--um-bubblegum)"></div><div class="swatch-name">Bubblegum</div><div class="label">Quiz · 成就 · <code>#FF6BA9</code></div></div>
+      <div><div class="swatch" style="background:var(--um-sunshine)"></div><div class="swatch-name">Sunshine</div><div class="label">XP · 奖励 · <code>#FFD43B</code></div></div>
+      <div><div class="swatch" style="background:var(--um-mint)"></div><div class="swatch-name">Mint Green</div><div class="label">Progress · 完成 · <code>#3DD9A9</code></div></div>
+      <div><div class="swatch" style="background:var(--um-purple)"></div><div class="swatch-name">Purple AI</div><div class="label">AI 生成 · Premium · <code>#8B5CF6</code></div></div>
+    </div>
+
+    <div style="font-size:var(--um-fs-eyebrow);font-weight:var(--um-fw-bold);color:var(--um-slate);margin:32px 0 8px;letter-spacing:.1em">NEUTRAL COLORS · 中性色</div>
+    <div class="grid cols-6">
+      <div><div class="swatch" style="background:var(--um-ink)"></div><div class="swatch-name">Ink</div><div class="label"><code>#1F1B2D</code></div></div>
+      <div><div class="swatch" style="background:var(--um-ink-soft)"></div><div class="swatch-name">Ink Soft</div><div class="label"><code>#3D3851</code></div></div>
+      <div><div class="swatch" style="background:var(--um-slate)"></div><div class="swatch-name">Slate</div><div class="label"><code>#6B6478</code></div></div>
+      <div><div class="swatch" style="background:var(--um-stone)"></div><div class="swatch-name">Stone</div><div class="label"><code>#C7C0D5</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-canvas)"></div><div class="swatch-name">Warm Canvas 🚨</div><div class="label">主背景 (禁纯白) · <code>#FFFEF7</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-white)"></div><div class="swatch-name">White</div><div class="label">卡片 · <code>#FFFFFF</code></div></div>
+    </div>
+
+    <div style="font-size:var(--um-fs-eyebrow);font-weight:var(--um-fw-bold);color:var(--um-slate);margin:32px 0 8px;letter-spacing:.1em">COLOR WASH · 柔和彩色背景（卡片底色）</div>
+    <div class="grid cols-5">
+      <div><div class="swatch lite" style="background:var(--um-wash-coral)"></div><div class="swatch-name">Coral Wash</div><div class="label"><code>#FFEFE9</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-wash-bubblegum)"></div><div class="swatch-name">Bubblegum Wash</div><div class="label"><code>#FFEAF3</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-wash-sunshine)"></div><div class="swatch-name">Sunshine Wash</div><div class="label"><code>#FFF7D6</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-wash-mint)"></div><div class="swatch-name">Mint Wash</div><div class="label"><code>#DCF6EC</code></div></div>
+      <div><div class="swatch lite" style="background:var(--um-wash-purple)"></div><div class="swatch-name">Purple Wash</div><div class="label"><code>#F1EAFF</code></div></div>
+    </div>
+
+    <div style="font-size:var(--um-fs-eyebrow);font-weight:var(--um-fw-bold);color:var(--um-slate);margin:32px 0 8px;letter-spacing:.1em">GRADIENTS · 渐变（一屏 ≤ 2 个）</div>
+    <div class="grid cols-5">
+      <div><div class="gradient-card" style="background:var(--um-grad-coral)"></div><div class="label">Coral · 主 CTA</div></div>
+      <div><div class="gradient-card" style="background:var(--um-grad-bubblegum)"></div><div class="label">Bubblegum</div></div>
+      <div><div class="gradient-card" style="background:var(--um-grad-sunshine)"></div><div class="label">Sunshine · 升级</div></div>
+      <div><div class="gradient-card" style="background:var(--um-grad-mint)"></div><div class="label">Mint · Success</div></div>
+      <div><div class="gradient-card" style="background:var(--um-grad-purple)"></div><div class="label">Purple AI</div></div>
+    </div>
+  </section>
+
+  <!-- 02 ─ TYPOGRAPHY ──────────────────────────────────────── -->
+  <section class="section" id="typography">
+    <div class="section-head"><span class="section-num">02</span><span class="section-title">Typography · 字体系统</span><span class="section-sub">Plus Jakarta Sans + 阿里妈妈数黑体 (+ Caveat 鼓励语)</span></div>
+
+    <div class="type-stack">
+      <div class="type-row"><div class="name">Hero</div><div style="font-size:var(--um-fs-hero);font-weight:var(--um-fw-extrabold);line-height:1">Aa 牛小匠</div><div class="meta">72px · ExtraBold</div></div>
+      <div class="type-row"><div class="name">H1 / Page</div><div style="font-size:var(--um-fs-page);font-weight:var(--um-fw-extrabold)">学习更轻松 Display</div><div class="meta">48px · ExtraBold</div></div>
+      <div class="type-row"><div class="name">H2 / Section</div><div style="font-size:var(--um-fs-section);font-weight:var(--um-fw-bold)">Section Heading 36px</div><div class="meta">36px · Bold</div></div>
+      <div class="type-row"><div class="name">H3 / Card</div><div style="font-size:var(--um-fs-card);font-weight:var(--um-fw-bold)">Card Title 20px</div><div class="meta">20px · Bold</div></div>
+      <div class="type-row"><div class="name">Body Lg</div><div style="font-size:var(--um-fs-body-lg);font-weight:var(--um-fw-medium)">Lead paragraph — 大学生看这一段。</div><div class="meta">18px · Medium</div></div>
+      <div class="type-row"><div class="name">Body</div><div style="font-size:var(--um-fs-body)">普通正文 16px。让学生看着不累。</div><div class="meta">16px · Regular</div></div>
+      <div class="type-row"><div class="name">Caption</div><div style="font-size:var(--um-fs-caption);color:var(--um-slate)">CAPTION · METADATA · 12PX</div><div class="meta">12px · Medium</div></div>
+      <div class="type-row"><div class="name">Accent</div><div style="font-family:var(--um-font-accent);font-size:32px;color:var(--um-coral)">Keep going! 继续冲刺</div><div class="meta">Caveat · 仅鼓励语</div></div>
+    </div>
+  </section>
+
+  <!-- 03 ─ MASCOT ──────────────────────────────────────────── -->
+  <section class="section" id="mascot">
+    <div class="section-head"><span class="section-num">03</span><span class="section-title">Mascot · 牛小匠情绪库</span><span class="section-sub">9 个标准态 · 禁止自创</span></div>
+
+    <p style="margin-bottom:var(--um-space-6)">每个状态对应固定场景，<b>禁止把 deadline 牛小匠贴在 success 页面</b>。本套是品牌官方情绪库，不要乱画新姿态。</p>
+
+    <div class="grid mascot-grid">
+      <div><div class="mascot-cell m-default"><img src="assets/mascot/default.png" alt="" /></div><div class="mascot-state">Default</div><div class="mascot-meta">Logo / Avatar</div></div>
+      <div><div class="mascot-cell m-happy"><img src="assets/mascot/champion.png" alt="" /></div><div class="mascot-state">开心 Happy</div><div class="mascot-meta">完成 / Success / 👍</div></div>
+      <div><div class="mascot-cell m-studying"><img src="assets/mascot/studying.png" alt="" /></div><div class="mascot-state">学习中 Studying</div><div class="mascot-meta">Lecture / Reading</div></div>
+      <div><div class="mascot-cell m-thinking"><img src="assets/mascot/thinking.png" alt="" /></div><div class="mascot-state">思考中 Thinking</div><div class="mascot-meta">Loading / 用户提问</div></div>
+      <div><div class="mascot-cell m-ai-analyzing"><img src="assets/mascot/ai-analyzing.png" alt="" /></div><div class="mascot-state">AI 分析中</div><div class="mascot-meta">AI Generation / 数据处理</div></div>
+      <div><div class="mascot-cell m-charging"><img src="assets/mascot/charging.png" alt="" /></div><div class="mascot-state">冲呀! Charging</div><div class="mascot-meta">Streak / Sprint / 冲刺</div></div>
+      <div><div class="mascot-cell m-tired"><img src="assets/mascot/tired.png" alt="" /></div><div class="mascot-state">熬夜中 Tired</div><div class="mascot-meta">深夜 / 共情态</div></div>
+      <div><div class="mascot-cell m-deadline"><img src="assets/mascot/deadline.png" alt="" /></div><div class="mascot-state">Deadline 警告</div><div class="mascot-meta">紧迫提醒 / Alert</div></div>
+      <div><div class="mascot-cell m-champion" style="background:var(--um-wash-sunshine)"><img src="assets/mascot/champion.png" alt="" /></div><div class="mascot-state">满分拿下 Champion</div><div class="mascot-meta">Quiz 满分 / 成就解锁</div></div>
+    </div>
+
+    <div style="background:var(--um-wash-mint);padding:var(--um-space-4) var(--um-space-6);border-radius:var(--um-radius-md);margin-top:var(--um-space-6);font-size:var(--um-fs-body-sm)">
+      <b>📌 风格说明</b>：主体走<b>黑白扁平 + 单色 accent</b>（蓝/红/橙）一脉相承的扁平贴纸风。唯一例外是 <b>AI 分析中</b> ——
+      用了蓝色玻璃质感图表元素，是有意区分"AI 自己在工作"和"用户在思考/学习"两种场景，不是风格 bug。
+    </div>
+  </section>
+
+  <!-- 04 ─ BUTTONS ─────────────────────────────────────────── -->
+  <section class="section" id="buttons">
+    <div class="section-head"><span class="section-num">04</span><span class="section-title">Buttons · 按钮系统</span><span class="section-sub">永远 Full Pill · 永远带 Glow Shadow</span></div>
+
+    <div class="grid cols-2">
+      <div>
+        <div class="btn-state-label">PRIMARY · 渐变胶囊 + mascot 头</div>
+        <div class="btn-row">
+          <button class="btn btn-coral"><span class="m"><img src="assets/mascot/default.png" alt=""></span>开始 AI 学习 →</button>
+          <button class="btn btn-md btn-bubblegum"><span class="ico-emoji">🔥</span>AI 生成</button>
+          <button class="btn btn-md btn-sunshine"><span class="ico-emoji">⚡</span>立即升级</button>
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">HOVER · 上移 2px + 加深阴影</div>
+        <div class="btn-row">
+          <button class="btn btn-coral" style="transform:translateY(-2px);box-shadow:0 18px 32px rgba(255,122,102,.4)"><span class="m"><img src="assets/mascot/default.png" alt=""></span>开始 AI 学习 →</button>
+          <button class="btn btn-md btn-bubblegum" style="transform:translateY(-2px)"><span class="ico-emoji">🔥</span>AI 生成</button>
+          <button class="btn btn-md btn-sunshine" style="transform:translateY(-2px)"><span class="ico-emoji">⚡</span>立即升级</button>
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">PURPLE / MINT · 功能色</div>
+        <div class="btn-row">
+          <button class="btn btn-purple"><span class="m"><img src="assets/mascot/default.png" alt=""></span>AI 生成报告 →</button>
+          <button class="btn btn-md btn-mint">✓ 已完成</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="btn-state-label">SECONDARY · 白底描边胶囊（小一号）</div>
+        <div class="btn-row">
+          <button class="btn btn-secondary">📖 查看课程</button>
+          <button class="btn btn-secondary">📊 生成报告</button>
+          <button class="btn btn-secondary">+ 自定义</button>
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">GHOST · 文字按钮</div>
+        <div class="btn-row">
+          <button class="btn btn-ghost">了解更多 →</button>
+          <button class="btn btn-ghost">稍后再说</button>
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">DISABLED · Stone 灰</div>
+        <div class="btn-row">
+          <button class="btn btn-disabled" disabled>不可用</button>
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">尺寸约定</div>
+        <p style="font-size:var(--um-fs-body-sm);color:var(--um-slate);line-height:1.7">
+          • <b>Primary (52px)</b>：最重要的"做"动作，必带 mascot 圆头<br/>
+          • <b>Medium (44px)</b>：次重要 / 带 emoji 前缀的辅助动作<br/>
+          • <b>Secondary / Ghost</b>：低重要度，不抢主 CTA 风头
+        </p>
+
+        <div class="btn-state-label" style="margin-top:16px">微文案推荐</div>
+        <p style="font-size:var(--um-fs-body-sm);color:var(--um-slate)">让我 AI 一下 · 继续冲刺 · Deadline 救援 · 生成复习卡片 · HD 不是梦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 ─ INPUTS ──────────────────────────────────────────── -->
+  <section class="section" id="inputs">
+    <div class="section-head"><span class="section-num">05</span><span class="section-title">Inputs · 输入框系统</span><span class="section-sub">48px 高 · 12px 圆角 · Coral focus ring</span></div>
+
+    <div class="grid cols-2">
+      <div>
+        <div class="btn-state-label">DEFAULT</div>
+        <div class="input-wrap with-icon-l">
+          <span class="icon-l">🐮</span>
+          <input class="input" placeholder="搜索课程、资料、问题…" />
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">FOCUS · 4px Coral ring</div>
+        <input class="input focus" value="提示工程入门" />
+
+        <div class="btn-state-label" style="margin-top:24px">FILLED · 已填充</div>
+        <input class="input" value="AI Lecture Summary" />
+
+        <div class="btn-state-label" style="margin-top:24px">ERROR · Coral wash 底</div>
+        <input class="input error" value="请输入关键词" />
+      </div>
+
+      <div>
+        <div class="btn-state-label">WITH ICON-RIGHT · 带日期/搜索</div>
+        <div class="input-wrap with-icon-r">
+          <span class="icon-r">📅</span>
+          <input class="input" placeholder="选择日期" />
+        </div>
+
+        <div class="btn-state-label" style="margin-top:24px">TEXT AREA · 文本域 (counter 内嵌右下)</div>
+        <div class="textarea-wrap">
+          <textarea class="textarea" placeholder="输入你的问题或描述…"></textarea>
+          <div class="counter"><span class="mini-mascot"><img src="assets/mascot/default.png" alt=""/></span>0 / 300</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 ─ CHIPS & TAGS ────────────────────────────────────── -->
+  <section class="section" id="chips">
+    <div class="section-head"><span class="section-num">06</span><span class="section-title">Chips & Tags · 标签 / 贴纸徽章</span><span class="section-sub">Sticker badge 每屏 ≤ 2 个</span></div>
+
+    <div class="btn-state-label">FUNCTION CHIPS · 功能标签</div>
+    <div class="btn-row" style="margin-bottom:24px">
+      <span class="chip coral">🤖 AI 助手</span>
+      <span class="chip purple">📖 Lecture</span>
+      <span class="chip bubblegum">🎯 Quiz</span>
+      <span class="chip coral">📝 Assignment</span>
+      <span class="chip mint">✓ 已完成</span>
+      <span class="chip sunshine">⚡ 进行中</span>
+      <span class="chip gray">📄 草稿</span>
+      <span class="chip">+ 自定义标签</span>
+    </div>
+
+    <div class="btn-state-label">STICKER BADGES · 贴纸徽章（旋转 -3° + 硬阴影）</div>
+    <div class="btn-row">
+      <span class="sticker-badge sticker-coral">NEW</span>
+      <span class="sticker-badge sticker-sunshine">GPA UP!</span>
+      <span class="sticker-badge sticker-coral">DEADLINE RESCUE</span>
+      <span class="sticker-badge sticker-purple">HD MODE</span>
+      <span class="sticker-badge sticker-mint">KEEP GOING</span>
+    </div>
+  </section>
+
+  <!-- 07 ─ ICONS ───────────────────────────────────────────── -->
+  <section class="section" id="icons">
+    <div class="section-head"><span class="section-num">07</span><span class="section-title">Icons · 图标系统</span><span class="section-sub">Lucide / Phosphor · 1.75-2px stroke · 圆头</span></div>
+
+    <div class="grid cols-8">
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+      <div class="icon-cell filled"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.39 7.36H22l-6.31 4.59L18.08 22 12 17.42 5.92 22l2.39-8.05L2 9.36h7.61z"/></svg></div>
+      <div class="icon-cell filled"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+      <div class="icon-cell"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M10 18h4"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 08 ─ FEATURE CARDS ──────────────────────────────────── -->
+  <section class="section" id="cards">
+    <div class="section-head"><span class="section-num">08</span><span class="section-title">Cards · 卡片</span><span class="section-sub">24px 圆角 · mascot 站姿 · 彩色 chip 定位</span></div>
+
+    <div class="grid cols-4">
+      <div class="feature-card lecture">
+        <div class="mascot-thumb"><img src="assets/mascot/default.png" alt=""/></div>
+        <h4>AI Lecture Summary</h4>
+        <div class="desc">智能拍照课程并整理</div>
+        <div class="footer"><span class="chip purple">Lecture</span><span class="arrow">→</span></div>
+      </div>
+      <div class="feature-card quiz">
+        <div class="mascot-thumb"><img src="assets/mascot/default.png" alt=""/></div>
+        <h4>AI Quiz Generator</h4>
+        <div class="desc">根据知识点自动生成测验</div>
+        <div class="footer"><span class="chip bubblegum">Quiz</span><span class="arrow">→</span></div>
+      </div>
+      <div class="feature-card essay">
+        <div class="mascot-thumb"><img src="assets/mascot/default.png" alt=""/></div>
+        <h4>Essay Assistant</h4>
+        <div class="desc">AI 帮你优化论文写作</div>
+        <div class="footer"><span class="chip sunshine">Assignment</span><span class="arrow">→</span></div>
+      </div>
+      <div class="feature-card planner">
+        <div class="mascot-thumb"><img src="assets/mascot/default.png" alt=""/></div>
+        <h4>Study Planner</h4>
+        <div class="desc">制定你的学习计划</div>
+        <div class="footer"><span class="chip mint">Planner</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 ─ PROGRESS ─────────────────────────────────────── -->
+  <section class="section" id="progress">
+    <div class="section-head"><span class="section-num">09</span><span class="section-title">Progress & Steps · 进度与步骤条</span><span class="section-sub">必带 mascot tracker · 别用纯线条</span></div>
+
+    <div class="btn-state-label">PROGRESS BAR · 带 mascot tracker</div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin-bottom:32px">
+      <div class="progress">
+        <div class="bar"></div>
+        <div class="mascot-tracker"><img src="assets/mascot/default.png" alt=""/></div>
+      </div>
+      <div style="font-weight:var(--um-fw-bold);font-size:24px;color:var(--um-coral)">68%</div>
+    </div>
+
+    <div class="btn-state-label">STEPS · 完成→进行中→未来</div>
+    <div class="step-row">
+      <div class="step completed"><div class="dot">✓</div><div class="lbl">选择课程</div></div>
+      <div class="step completed"><div class="dot">✓</div><div class="lbl">上传资料</div></div>
+      <div class="step active"><div class="dot">3</div><div class="lbl">AI 分析</div></div>
+      <div class="step"><div class="dot">4</div><div class="lbl">生成结果</div></div>
+    </div>
+  </section>
+
+  <!-- 10 ─ ALERTS ──────────────────────────────────────────── -->
+  <section class="section" id="alerts">
+    <div class="section-head"><span class="section-num">10</span><span class="section-title">Alerts · 提示组件</span><span class="section-sub">Wash 底 · 短句人话 · 不报错堆术语</span></div>
+
+    <div class="grid cols-2">
+      <div class="alert success"><div class="ico">✓</div><div class="msg"><b>操作成功</b><br/>你的文件已成功上传！</div></div>
+      <div class="alert warning"><div class="ico">!</div><div class="msg"><b>注意</b><br/>请检查你的网络连接。</div></div>
+      <div class="alert error"><div class="ico">✕</div><div class="msg"><b>操作失败</b><br/>上传失败，请重试。</div></div>
+      <div class="alert info"><div class="ico">i</div><div class="msg"><b>提示</b><br/>AI 正在为你生成结果…</div></div>
+    </div>
+  </section>
+
+  <!-- 11 ─ MODAL ───────────────────────────────────────────── -->
+  <section class="section" id="modal">
+    <div class="section-head"><span class="section-num">11</span><span class="section-title">Modal · 弹窗</span><span class="section-sub">圆角 24-32px · 大阴影 · mascot 蹲角落</span></div>
+
+    <div class="modal">
+      <h4>上传文件</h4>
+      <div class="upload-zone">
+        <div style="font-size:32px">☁️</div>
+        <p>拖拽文件到这里，或 <a style="color:var(--um-coral);font-weight:var(--um-fw-bold)">点击上传</a></p>
+        <p style="font-size:12px;color:var(--um-slate);margin-top:4px">支持 PDF, PPT, DOCX, TXT (最大 50MB)</p>
+        <img class="mascot-corner" src="assets/mascot/default.png" alt=""/>
+      </div>
+      <button class="btn btn-coral" style="width:100%;justify-content:center">选择文件</button>
+    </div>
+  </section>
+
+  <!-- 12 ─ TOOLTIP ─────────────────────────────────────────── -->
+  <section class="section" id="tooltip">
+    <div class="section-head"><span class="section-num">12</span><span class="section-title">Tooltip · 气泡提示</span><span class="section-sub">Ink 底 + 偷看 mascot · 文案带情绪</span></div>
+
+    <div class="btn-row" style="gap:48px;align-items:flex-end">
+      <div class="tooltip-wrap">
+        <div class="tooltip">这里可以上传 lecture notes</div>
+        <img class="peek" src="assets/mascot/default.png" alt=""/>
+      </div>
+      <div class="tooltip-wrap">
+        <div class="tooltip">AI 会帮你整理重点 ✨</div>
+        <img class="peek" src="assets/mascot/default.png" alt=""/>
+      </div>
+      <div class="tooltip-wrap">
+        <div class="tooltip">继续学习，快完成啦！</div>
+        <img class="peek" src="assets/mascot/default.png" alt=""/>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 ─ SPACING ─────────────────────────────────────────── -->
+  <section class="section" id="spacing">
+    <div class="section-head"><span class="section-num">13</span><span class="section-title">Spacing · 间距规范</span><span class="section-sub">8pt grid · 禁止 5/7/13 这类非系统值</span></div>
+
+    <div class="spacing-row">
+      <div><div class="bar" style="height:4px;width:24px"></div><div class="label">4 / <code>--um-space-1</code></div></div>
+      <div><div class="bar" style="height:8px;width:24px"></div><div class="label">8 / <code>--um-space-2</code></div></div>
+      <div><div class="bar" style="height:12px;width:24px"></div><div class="label">12 / <code>--um-space-3</code></div></div>
+      <div><div class="bar" style="height:16px;width:24px"></div><div class="label">16 / <code>--um-space-4</code></div></div>
+      <div><div class="bar" style="height:24px;width:24px"></div><div class="label">24 / <code>--um-space-6</code></div></div>
+      <div><div class="bar" style="height:32px;width:24px"></div><div class="label">32 / <code>--um-space-8</code></div></div>
+      <div><div class="bar" style="height:40px;width:24px"></div><div class="label">40 / <code>--um-space-10</code></div></div>
+      <div><div class="bar" style="height:48px;width:24px"></div><div class="label">48 / <code>--um-space-12</code></div></div>
+      <div><div class="bar" style="height:64px;width:24px"></div><div class="label">64 / <code>--um-space-16</code></div></div>
+      <div><div class="bar" style="height:80px;width:24px"></div><div class="label">80 / <code>--um-space-20</code></div></div>
+    </div>
+  </section>
+
+  <!-- 14 ─ RADIUS ──────────────────────────────────────────── -->
+  <section class="section" id="radius">
+    <div class="section-head"><span class="section-num">14</span><span class="section-title">Radius · 圆角规范</span><span class="section-sub">卡片默认 24 · 按钮永远 Full</span></div>
+
+    <div class="radius-row">
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-xs)">4px</div><div class="label">XS · micro chip</div></div>
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-sm)">8px</div><div class="label">SM · small ctrl</div></div>
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-md)">12px</div><div class="label">MD · input</div></div>
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-lg)">24px</div><div class="label">LG · card ✓</div></div>
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-xl)">40px</div><div class="label">XL · feature</div></div>
+      <div><div class="radius-cell" style="border-radius:var(--um-radius-full)">Full</div><div class="label">Pill · btn/badge</div></div>
+    </div>
+  </section>
+
+  <!-- 15 ─ SHADOW ──────────────────────────────────────────── -->
+  <section class="section" id="shadow">
+    <div class="section-head"><span class="section-num">15</span><span class="section-title">Shadow · 阴影规范</span><span class="section-sub">软阴影做深度 · 硬阴影只用在 sticker</span></div>
+
+    <div class="grid cols-4">
+      <div><div class="shadow-cell sm">Sm</div><div class="label"><code>0 2px 8px rgba(31,27,45,.06)</code></div></div>
+      <div><div class="shadow-cell md">Md</div><div class="label"><code>0 8px 24px rgba(31,27,45,.08)</code></div></div>
+      <div><div class="shadow-cell lg">Lg</div><div class="label"><code>0 16px 40px rgba(31,27,45,.12)</code></div></div>
+      <div><div class="shadow-cell sticker">Sticker</div><div class="label"><code>4px 4px 0 ink</code> · 限 sticker</div></div>
+    </div>
+  </section>
+
+  <!-- 16 ─ NAVIGATION ──────────────────────────────────────── -->
+  <section class="section" id="navigation">
+    <div class="section-head"><span class="section-num">16</span><span class="section-title">Navigation · 导航</span><span class="section-sub">Top bar / Bottom nav (pill) / 中间 AI FAB</span></div>
+
+    <div class="btn-state-label">TOP NAV · 顶部导航</div>
+    <div class="topbar" style="margin-bottom:32px">
+      <div class="lockup"><img src="assets/mascot/default.png" alt=""/>UniMate AI</div>
+      <nav>
+        <a class="active">首页</a><a>课程</a><a>工具</a><a>社区</a>
+      </nav>
+      <div class="right">
+        <span style="cursor:pointer">🔍</span>
+        <img src="assets/mascot/default.png" alt="" style="width:32px;border-radius:50%"/>
+      </div>
+    </div>
+
+    <div class="btn-state-label">BOTTOM NAV (移动端) · 中间 AI FAB</div>
+    <div class="bottombar">
+      <div class="item active"><span style="font-size:20px">🏠</span><span>首页</span></div>
+      <div class="item"><span style="font-size:20px">📖</span><span>课程</span></div>
+      <div class="ai-fab"><img src="assets/mascot/default.png" alt=""/></div>
+      <div class="item"><span style="font-size:20px">🛠</span><span>工具</span></div>
+      <div class="item"><span style="font-size:20px">👤</span><span>我的</span></div>
+    </div>
+  </section>
+
+  <!-- 17 ─ DASHBOARD DEMO ─────────────────────────────────── -->
+  <section class="section" id="dashboard">
+    <div class="section-head"><span class="section-num">17</span><span class="section-title">Dashboard 范式 · 学习数据 + 连击</span><span class="section-sub">游戏化 ≠ 幼稚化 · 大色块 + 大数字</span></div>
+
+    <div class="stat-row" style="margin-bottom:24px">
+      <div class="stat coral"><div class="num">12</div><div class="lbl">课程完成</div></div>
+      <div class="stat purple"><div class="num">36h</div><div class="lbl">学习时长</div></div>
+      <div class="stat mint"><div class="num">89%</div><div class="lbl">正确率</div></div>
+      <div class="stat sunshine"><div class="num">15</div><div class="lbl">AI 帮助次数</div></div>
+    </div>
+
+    <div class="streak-card">
+      <div class="flame">🔥</div>
+      <div>
+        <div style="font-size:var(--um-fs-body-sm);color:var(--um-slate);font-weight:var(--um-fw-semibold)">连续学习天数</div>
+        <div class="num">7 天</div>
+      </div>
+      <div class="squiggle">Keep going!</div>
+      <img class="mascot-cap" src="assets/mascot/default.png" alt=""/>
+    </div>
+  </section>
+
+  <!-- 18 ─ VOICE & MICROCOPY ──────────────────────────────── -->
+  <section class="section" id="voice">
+    <div class="section-head"><span class="section-num">18</span><span class="section-title">Voice & Microcopy · 文案语气</span><span class="section-sub">Friendly · Direct · 不企业 / 不幼稚</span></div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="quote">让我 AI 一下 →</div>
+        <div class="meta">主按钮文案 · 推力 + 幽默</div>
+      </div>
+      <div class="voice-card">
+        <div class="quote">牛小匠正在分析中…</div>
+        <div class="meta">Loading 提示 · 拟人化</div>
+      </div>
+      <div class="voice-card">
+        <div class="quote">Deadline 救援</div>
+        <div class="meta">Coral CTA · 紧迫共情</div>
+      </div>
+      <div class="voice-card">
+        <div class="quote">你离完成又近了一步</div>
+        <div class="meta">Progress 鼓励 · 不空喊</div>
+      </div>
+      <div class="voice-card" style="background:var(--um-wash-coral);border-color:transparent">
+        <div class="quote" style="color:var(--um-coral);text-decoration:line-through">赋能你的学习旅程</div>
+        <div class="meta">❌ 企业化 · 别这样写</div>
+      </div>
+      <div class="voice-card" style="background:var(--um-wash-coral);border-color:transparent">
+        <div class="quote" style="color:var(--um-coral);text-decoration:line-through">宝宝今天学习了吗</div>
+        <div class="meta">❌ 幼稚化 · 别这样写</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 ─ DO & DON'T ──────────────────────────────────────── -->
+  <section class="section" id="dos">
+    <div class="section-head"><span class="section-num">19</span><span class="section-title">Do & Don't · 红线</span><span class="section-sub">PR 看到 Don't 立即打回</span></div>
+
+    <div class="do-grid">
+      <div class="do-card do">
+        <h4>✅ Do</h4>
+        <ul>
+          <li>主背景永远 <code>#FFFEF7</code> Warm Canvas</li>
+          <li>按钮永远 Full Pill + 渐变 + Glow</li>
+          <li>Mascot 9 态对号入座</li>
+          <li>卡片默认 24px 圆角</li>
+          <li>一屏品牌瞬间 1 个就够（mascot/sticker/squiggle/blob）</li>
+          <li>文案"人话 + 推力"</li>
+          <li>游戏化做进度和完成态</li>
+        </ul>
+      </div>
+      <div class="do-card no">
+        <h4>❌ Don't</h4>
+        <ul>
+          <li>主背景用纯白 <code>#FFFFFF</code></li>
+          <li>矩形 / 小圆角按钮、扁平蓝色按钮</li>
+          <li>蓝色作为品牌主识别色（这是 SaaS 味）</li>
+          <li>暗色背景 + 发光特效堆品牌感</li>
+          <li>一屏 ≥3 个强渐变 / ≥3 个 sticker</li>
+          <li>用 Ant Design / MUI 默认外观</li>
+          <li>Mascot 状态贴错（错误页贴 Happy）</li>
+          <li>Caveat 字体进正文 / 标题</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="assets/mascot/default.png" alt=""/>
+    UniMate AI / 牛小匠课代表 · Brand Book v0.1 · JR Academy © 2026
+  </footer>
+
+</body>
+</html>
