@@ -1,6 +1,6 @@
-# UniMate AI / 牛小匠课代表 — Brand Book
+# UniMate AI / 牛小匠课代表 — Design System
 
-> 这是一个 **UI 规范 / 品牌手册**，不是产品代码。
+> 这是一个 **UI 规范 / 设计系统**，不是产品代码。
 > 双击 `index.html` 就能看，不需要 npm install / 不需要 build。
 
 ---
@@ -9,7 +9,7 @@
 
 ```
 unimate-ai/
-├── index.html              ← 品牌手册（19 sections，双击打开就能看）
+├── index.html              ← 设计系统（19 sections，双击打开就能看）
 ├── app-design-refs.html    ← App 设计稿参考（4 张 mobile mockup，sticky-nav 跟 index 互链）
 ├── DESIGN.md               ← 完整设计规范
 ├── tokens/
