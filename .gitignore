@@ -3,3 +3,7 @@
 node_modules/
 .idea/
 .vscode/
+
+# Local-only asset backups (历史快照，不进 repo)
+assets/_backup-*/
+assets/_archive-*/

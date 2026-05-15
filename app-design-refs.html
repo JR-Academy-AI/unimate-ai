@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UniMate AI · App 设计稿参考 · 团队对齐</title>
+  <meta name="description" content="UniMate AI / 牛小匠 App 设计稿参考 — 仅供团队对齐 mascot / 色彩 / 排版调性，不照搬开发" />
+  <link rel="stylesheet" href="tokens/tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--um-font-sans);
+      background: var(--um-canvas);
+      color: var(--um-ink);
+      line-height: var(--um-lh-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--um-ink-soft); text-decoration: none; }
+    code {
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 11px; background: var(--um-fog, #EAE6F4);
+      padding: 1px 6px; border-radius: var(--um-radius-xs);
+      color: var(--um-ink-soft);
+    }
+
+    .page { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* —— Sticky nav 跟 index.html 同款 (UniMate Coral) —— */
+    .sticky-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 254, 247, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin: 0 -24px 24px;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(31,27,45,0.08);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .sticky-nav .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 14px; color: var(--um-ink);
+    }
+    .sticky-nav .brand img { width: 32px; height: 32px; border-radius: 50%; box-shadow: var(--um-shadow-sm); }
+    .sticky-nav .brand .label-zh { font-family: var(--um-font-accent); font-size: 18px; color: var(--um-coral); margin-left: 2px; }
+    .sticky-nav .nav-links { display: flex; gap: 6px; margin-left: auto; }
+    .sticky-nav .nav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--um-radius-full);
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      transition: transform var(--um-dur-hover), background var(--um-dur-hover);
+    }
+    .sticky-nav .nav-link.current {
+      background: var(--um-coral); color: var(--um-white);
+      box-shadow: 0 6px 16px rgba(255,122,102,0.32);
+    }
+    .sticky-nav .nav-link.subtle { background: var(--um-wash-coral); color: var(--um-coral); }
+    .sticky-nav .nav-link.subtle:hover { background: var(--um-coral); color: var(--um-white); transform: translateY(-1px); }
+    @media (max-width: 700px) {
+      .sticky-nav { gap: 8px; padding: 10px 16px; margin: 0 -16px 16px; }
+      .sticky-nav .brand .label { display: none; }
+      .sticky-nav .brand .label-zh { display: none; }
+      .sticky-nav .nav-link { padding: 6px 12px; font-size: 12px; }
+    }
+
+    /* —— Hero header —— */
+    .header {
+      background: var(--um-white);
+      border-radius: var(--um-radius-xl);
+      padding: 32px 36px;
+      box-shadow: var(--um-shadow-md);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: var(--um-wash-coral);
+      border-radius: 50%;
+      opacity: 0.6;
+      z-index: 0;
+    }
+    .header > * { position: relative; z-index: 1; }
+    .header h1 {
+      margin: 0 0 6px;
+      font-size: 32px; font-weight: 800;
+      color: var(--um-ink); letter-spacing: -0.5px;
+    }
+    .header h1 .accent {
+      font-family: var(--um-font-accent);
+      color: var(--um-coral);
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+    .header .en {
+      font-size: 12px;
+      color: var(--um-slate);
+      margin: 0 0 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .warning {
+      background: var(--um-wash-sunshine);
+      border-left: 4px solid var(--um-sunshine);
+      padding: 14px 18px;
+      border-radius: var(--um-radius-sm);
+      font-size: 13px;
+      color: #7a5a00;
+      line-height: var(--um-lh-relaxed);
+    }
+    .warning strong { color: var(--um-coral); }
+    .warning a { color: var(--um-coral); font-weight: 700; }
+    .warning a:hover { text-decoration: underline; }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .toc a {
+      padding: 12px 16px;
+      background: var(--um-canvas);
+      border: 1.5px solid rgba(31,27,45,0.06);
+      border-radius: var(--um-radius-md);
+      font-size: 13px; font-weight: 700;
+      color: var(--um-ink-soft);
+      display: flex; align-items: center; gap: 10px;
+      transition: all var(--um-dur-hover);
+    }
+    .toc a:hover {
+      background: var(--um-wash-coral);
+      border-color: var(--um-coral);
+      color: var(--um-coral);
+      transform: translateY(-1px);
+    }
+    .toc a .num {
+      font-family: 'JetBrains Mono', 'SF Mono', monospace;
+      font-weight: 800;
+      color: var(--um-coral);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    /* —— Ref card —— */
+    .ref-card {
+      background: var(--um-white);
+      border-radius: var(--um-radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--um-shadow-sm);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+      align-items: start;
+      transition: box-shadow var(--um-dur-hover);
+    }
+    .ref-card:hover { box-shadow: var(--um-shadow-md); }
+    @media (max-width: 760px) {
+      .ref-card { grid-template-columns: 1fr; padding: 22px 20px; gap: 18px; }
+    }
+    .ref-meta .num {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--um-wash-coral);
+      color: var(--um-coral);
+      border-radius: var(--um-radius-full);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .ref-meta h2 {
+      margin: 0 0 12px;
+      font-size: 20px; font-weight: 800;
+      color: var(--um-ink); letter-spacing: -0.2px;
+    }
+    .ref-meta .accent {
+      font-family: var(--um-font-accent);
+      color: var(--um-coral);
+      font-weight: 700;
+      font-size: 1.15em;
+    }
+    .ref-meta .desc {
+      font-size: 13.5px;
+      color: var(--um-ink-soft);
+      margin-bottom: 14px;
+      line-height: var(--um-lh-relaxed);
+    }
+    .ref-meta .desc strong { color: var(--um-ink); font-weight: 700; }
+    .ref-meta code { font-size: 10px; }
+
+    .ref-frame {
+      background: var(--um-canvas);
+      border-radius: var(--um-radius-md);
+      padding: 18px;
+      text-align: center;
+      border: 1.5px solid rgba(31,27,45,0.04);
+    }
+    .ref-frame img {
+      max-width: 100%; height: auto;
+      border-radius: var(--um-radius-md);
+      box-shadow: var(--um-shadow-md);
+      display: inline-block;
+    }
+    .ref-frame.tall img { max-width: 340px; }
+    .ref-frame.wide img { max-width: 100%; }
+
+    /* —— Tag rows —— */
+    .tag-row {
+      display: flex; flex-wrap: wrap;
+      gap: 6px; margin-top: 14px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 4px 11px;
+      border-radius: var(--um-radius-full);
+      background: var(--um-wash-coral);
+      color: var(--um-coral);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .tag.purple { background: var(--um-wash-purple); color: var(--um-purple); }
+    .tag.mint { background: var(--um-wash-mint); color: #1a8c77; }
+    .tag.sunshine { background: var(--um-wash-sunshine); color: #7a5a00; }
+    .tag.bubblegum { background: var(--um-wash-bubblegum); color: var(--um-bubblegum); }
+
+    /* —— Mascot key insights box —— */
+    .insights {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--um-wash-coral);
+      border-radius: var(--um-radius-md);
+      font-size: 12px;
+      line-height: var(--um-lh-relaxed);
+      color: var(--um-ink-soft);
+    }
+    .insights .label {
+      font-family: var(--um-font-accent);
+      color: var(--um-coral);
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .insights ul { margin: 0; padding-left: 16px; }
+    .insights li { margin: 3px 0; }
+
+    /* —— Footer —— */
+    .footer {
+      margin-top: 48px;
+      padding: 28px 24px;
+      background: var(--um-white);
+      border-radius: var(--um-radius-lg);
+      box-shadow: var(--um-shadow-sm);
+      text-align: center;
+      font-size: 13px;
+      color: var(--um-slate);
+      line-height: var(--um-lh-relaxed);
+    }
+    .footer .accent {
+      font-family: var(--um-font-accent);
+      color: var(--um-coral);
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .footer a { color: var(--um-coral); font-weight: 700; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ STICKY NAV ============ -->
+  <nav class="sticky-nav">
+    <span class="brand">
+      <img src="assets/logo/avatar.png" alt=""/>
+      <span class="label">UniMate AI</span>
+      <span class="label-zh">牛小匠</span>
+    </span>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link subtle">← 品牌手册</a>
+      <a href="app-design-refs.html" class="nav-link current">📱 App 设计稿</a>
+    </div>
+  </nav>
+
+  <div class="header" style="margin-top:8px;">
+    <h1>UniMate AI · App 设计稿参考 <span class="accent">📐</span></h1>
+    <p class="en">UNIMATE AI · APP DESIGN REFERENCES</p>
+    <div class="warning">
+      <strong>⚠️ 仅供团队对齐参考，不照搬开发</strong>
+      <br/>这 4 张是设计师产出的 App 视觉稿，给团队对齐 <strong>牛小匠 mascot 用法 / Coral 主色 / 排版调性 / 信息架构</strong>。
+      具体页面实现以产品 PRD 为准，UI 组件直接用 <a href="index.html">主品牌手册</a> 的 token + 组件（<code>--um-*</code>）。
+    </div>
+    <div class="toc">
+      <a href="#ref-01"><span class="num">01</span>首页 · Home</a>
+      <a href="#ref-02"><span class="num">02</span>登录 / 注册</a>
+      <a href="#ref-03"><span class="num">03</span>选课情报局</a>
+      <a href="#ref-04"><span class="num">04</span>核心 App 功能</a>
+      <a href="#ref-05"><span class="num">05</span>学术风险救援站</a>
+      <a href="#ref-06"><span class="num">06</span>AI 导入课表</a>
+      <a href="#ref-07"><span class="num">07</span>牛圈 · 校园 Feed</a>
+    </div>
+  </div>
+
+  <!-- ============ 01 首页 ============ -->
+  <div class="ref-card" id="ref-01">
+    <div class="ref-meta">
+      <span class="num">REF · 01</span>
+      <h2>首页 <span class="accent">Home</span></h2>
+      <p class="desc">
+        Hero 区 <strong>「今天想<u>学</u>什么？」</strong> + 牛小匠挥手 mascot（happy / studying 状态）+ <strong>「问 AI」橙色 Coral CTA</strong>。
+        下方 5 个核心功能 pill（AI 助手 / 找课程 / 学习路径 / 备考复习 / 学习成就），用不同 wash 色区分。
+        <strong>🔥 热门课程</strong> 4 张课程卡（COMP1531 / COMP2521 / MATH1131 / COMM1111），右上角 emoji 区分学科 +
+        显示在学人数 / 周内 DDL 警告。<strong>学习进度 Lv.12</strong> 突出大数字（XP 进度条 + 时长/完成/正确率/AI 帮助次数 4 stats）。
+        <strong>大家都在问</strong> Q&A 三条社区帖子，挂在科目标签下。
+      </p>
+      <div class="tag-row">
+        <span class="tag">Hero</span>
+        <span class="tag purple">5 入口</span>
+        <span class="tag mint">热门课程</span>
+        <span class="tag sunshine">游戏化 XP</span>
+        <span class="tag bubblegum">社区 Q&A</span>
+      </div>
+      <div class="insights">
+        <span class="label">Mascot 用法</span>
+        <ul>
+          <li>Hero 区：<strong>studying</strong>（笔记本电脑前学习 + Let's study 便利贴）= 调性钩子</li>
+          <li>学习进度区：<strong>champion</strong>（戴学位帽）= 等级升级仪式感</li>
+          <li>大家都在问：Q 头像无 mascot，避免 mascot 视觉过载</li>
+        </ul>
+      </div>
+      <code>app-design-refs/01-home.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/01-home.png" alt="UniMate AI 首页设计稿"/>
+    </div>
+  </div>
+
+  <!-- ============ 02 登录注册 ============ -->
+  <div class="ref-card" id="ref-02">
+    <div class="ref-meta">
+      <span class="num">REF · 02</span>
+      <h2>登录 / 注册 <span class="accent">Auth</span></h2>
+      <p class="desc">
+        左屏「登录」：上半 Hero 区 mascot waving + <strong>Let's study 贴纸</strong> + 「跳过」右上角小按钮。
+        登录方式 4 选 1：<strong>UNSW 学号登录（主 Coral CTA）</strong> / Google / Apple / 邮箱。底部 Discord + 微信 + 更多 3 个 social 圆形按钮。
+        右屏「注册」：UNSW 学号 (z1234567 占位)、邮箱、密码、确认密码 4 个 input；
+        勾选「我已阅读并同意 <strong>UniMate AI 的服务条款 与 隐私政策</strong>」+ <strong>创建账号 Coral CTA</strong>。
+      </p>
+      <div class="tag-row">
+        <span class="tag">Onboarding</span>
+        <span class="tag purple">学号优先</span>
+        <span class="tag mint">三方登录</span>
+        <span class="tag sunshine">UNSW 校园定位</span>
+      </div>
+      <div class="insights">
+        <span class="label">设计关键</span>
+        <ul>
+          <li><strong>「UNSW 学号登录」摆在最显眼位置</strong> → 强化"我是给你们学校用的"心智锚</li>
+          <li>Mascot 在 hero 区有 2 个不同动作（waving / studying with pencil）但 <strong>不同步骤分屏不冲突</strong></li>
+          <li><strong>背景大色块 hot pink 不规则形状</strong> = UniMate sticker 美学（DESIGN.md §sticker）</li>
+        </ul>
+      </div>
+      <code>app-design-refs/02-auth.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/02-auth.png" alt="UniMate AI 登录注册设计稿"/>
+    </div>
+  </div>
+
+  <!-- ============ 03 选课情报局 ============ -->
+  <div class="ref-card" id="ref-03">
+    <div class="ref-meta">
+      <span class="num">REF · 03</span>
+      <h2>选课情报局 <span class="accent">Course Intel</span></h2>
+      <p class="desc">
+        UniMate 的"杀手级社区功能" — <strong>由学生社区驱动的真实选课指南</strong>。
+        4 大 USP banner：匿名分享 / 投票互动 / 经验交流 / AI 总结。
+        <br/><br/>
+        <strong>8 张关联页：</strong>
+        <br/>1. <strong>社区首页</strong>（本学期选课生存指南 hero / 4 入口 pill）
+        <br/>2. <strong>水课排行榜</strong>（TOP 3 + 水滴数计票 + 牛小匠总结卡）
+        <br/>3. <strong>Tutor 评价列表</strong>（COMP6080 · 给分 / 友善度 / 回复速度 / 讲课质量 4 维度星级）
+        <br/>4. <strong>Tutor 详情页</strong>（综合评分大数字 4.6/5 + 标签云 + 学生评价匿名）
+        <br/>5. <strong>投票广场</strong>（最水的课 / 最压分 Tutor / 最痛苦 Assignment 进行中）
+        <br/>6. <strong>社区帖子列表</strong>（推荐 / 最新 / 关注 / 同专业 4 tab 切换）
+        <br/>7. <strong>帖子详情</strong>（Tutor 吐槽 tag + 评论流 + 匿名 emoji 头像）
+        <br/>8. <strong>个人中心</strong>（发布 12 / 评论 86 / 获赞 342 / 收藏 24 4 stats）
+      </p>
+      <div class="tag-row">
+        <span class="tag">社区</span>
+        <span class="tag purple">真实评价</span>
+        <span class="tag mint">投票互动</span>
+        <span class="tag sunshine">水滴计票</span>
+        <span class="tag bubblegum">匿名 UGC</span>
+      </div>
+      <div class="insights">
+        <span class="label">差异化亮点</span>
+        <ul>
+          <li><strong>"水滴"作为投票货币</strong> = UniMate 独有 metaphor，不用通用 ❤️ / 👍</li>
+          <li>Tutor 评分 4 维度（给分宽松 / 友善 / 回复速度 / 讲课清晰）= 学生真实关注点</li>
+          <li>牛小匠多以 <strong>thinking / studying / sprint</strong> 状态出现，覆盖"分析数据 / 学习中 / 冲刺投票"全场景</li>
+          <li>底部固定 Tab：首页 / 社区 / + (发帖 FAB Coral) / 消息 / 我的</li>
+        </ul>
+      </div>
+      <code>app-design-refs/03-course-intel-community.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/03-course-intel-community.png" alt="UniMate AI 选课情报局 8 张页面"/>
+    </div>
+  </div>
+
+  <!-- ============ 04 核心 App 功能 ============ -->
+  <div class="ref-card" id="ref-04">
+    <div class="ref-meta">
+      <span class="num">REF · 04</span>
+      <h2>核心 App 功能 <span class="accent">Core App</span></h2>
+      <p class="desc">
+        9 个核心页面 + <strong>底部 8 个 mascot 表情库</strong>。
+        <br/>1. <strong>启动页</strong>（UniMate AI 牛小匠课代表 / Smarter Study, Better Future / 4 USP pill）
+        <br/>2. <strong>首页 Hi Alex</strong>（DDL 倒计时大数字 12:36:58 + 今日任务 3 条 + 进度 68% + 今日 1 题）
+        <br/>3. <strong>本周课表</strong>（5/6 周 / TUE 高亮 / 5 节课时间轴 lecture/tutorial/lab 不同色块）
+        <br/>4. <strong>AI 助手</strong>（牛小匠 + 嗨 Alex 👋 6 个快捷动作 pill：解释概念 / 解题思路 / 总结文章 / 生成 Quiz / 分析作业 / 学习计划）
+        <br/>5. <strong>复习卡片</strong>（数据结构本周复习 5/20 已掌握 + 翻转卡 "栈是什么？" + 不熟悉 / 熟悉 二选一）
+        <br/>6. <strong>即将到来的截止</strong>（紧急 4 / 重要 6 / 进行中 3 + 倒计时大数字 + DDL 守门员上线提醒）
+        <br/>7. <strong>DDL Widget</strong>（iOS 锁屏小组件 12:36:58 + 今日 1 题 + 桌面 Calendar/Photos/Camera icons）
+        <br/>8. <strong>学习进度</strong>（68% 环形进度 + 周一到周日折线图 + 4 张成就徽章：7 天连学 / 早起学习 / 题目高手 / 时间管理）
+        <br/>9. <strong>我的 / Profile</strong>（Plus 会员金标 + 1200 Credits + 6 个 nav item: 我的课程/学习记录/错题本/收藏夹/设置/反馈）
+        <br/><br/>
+        <strong>📦 牛小匠表情库</strong>（底部 8 个标准态）：
+        开心 happy / 学习中 studying / 思考中 thinking / AI 分析中 ai-analyzing / 冲刺！ sprint / 熬夜中 anxious / Deadline 警告 anxious 变体 / 满分拿下 passed
+      </p>
+      <div class="tag-row">
+        <span class="tag">核心功能</span>
+        <span class="tag purple">DDL 倒计时</span>
+        <span class="tag mint">复习卡片</span>
+        <span class="tag sunshine">游戏化进度</span>
+        <span class="tag bubblegum">Widget</span>
+      </div>
+      <div class="insights">
+        <span class="label">Mascot 体系完整呈现</span>
+        <ul>
+          <li><strong>1 屏 1 表情，绝不冲突</strong>（DESIGN.md §3 红线）</li>
+          <li>DDL 倒计时全部用 <strong>anxious / sprint 火焰款</strong> = 紧迫感视觉化</li>
+          <li>AI 助手用 <strong>ai-analyzing</strong>（扫描眼） = 计算中视觉锚</li>
+          <li>复习卡片用 <strong>studying</strong>（拿书） = 翻卡场景</li>
+          <li>个人中心用 <strong>happy</strong>（默认） = 不要给"我的"主页焦虑感</li>
+        </ul>
+      </div>
+      <code>app-design-refs/04-core-features.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/04-core-features.png" alt="UniMate AI 9 个核心 App 功能 + 8 mascot 表情库"/>
+    </div>
+  </div>
+
+  <!-- ============ 05 学术风险救援站 ============ -->
+  <div class="ref-card" id="ref-05">
+    <div class="ref-meta">
+      <span class="num">REF · 05</span>
+      <h2>学术风险救援站 <span class="accent">Academic Rescue</span></h2>
+      <p class="desc">
+        UniMate 的"应急工具箱" — 留学生最焦虑的 3 个学术场景一站式解决，主入口品牌为
+        <strong>「牛小匠 · 学术风险救援站」</strong>，4 USP chips：更专业 / 更安心 / 更有底气 + Plus 会员升级解锁。
+        <br/><br/>
+        <strong>3 大功能模块</strong>（首页 3 张大卡，每张有进入箭头）：
+        <br/>1. <strong>理解我的作业</strong>（Understand My Assignment）— 上传作业要求 / Rubric / 截图 → AI 一键拆解 + 明确重点 + 给出执行计划。支持 PDF / 图片 / Word / Canvas 链接。完成态 mascot："超详细，拆解越精准喔！"
+        <br/>2. <strong>学术风险检测</strong>（Academic Risk Check）— Turnitin 官方 API + 4 多引擎备选（GPTZero / ZeroGPT / Copyleaks / Originality.ai）。<strong>23% 中等风险大数字</strong>（红绿带宽进度条）+ 4 维详情（文字相似性 18% / AI 生成 28% / 引用 12% / 内容一致 8%）+ 建议优化 + "优化建议 & 改写帮助" Coral CTA。
+        <br/>3. <strong>学术危机救援</strong>（I Got an Academic Warning）— 收到学校警告信 / 指控信？上传通知 → AI 解读违规内容 / 匹配学校政策流程 / 提供应对策略 + 时间线 / 生成申诉信 / 准备听证会材料。底栏 mascot："牛小匠会陪你一步步度过难关！"
+        <br/><br/>
+        <strong>侧栏</strong>：快速工具 5 个 chip（申请延长 SC / 挂科救援 / GPA 计算器 / 签证&PR 预警 / 更多）+ Plus 会员卡（牛小匠戴王冠 mascot + "解锁全部救援工具" CTA）。
+        <br/><br/>
+        <strong>底部 4 USP banner</strong>：覆盖澳洲主流大学（UNSW/USYD/UQ/Monash/墨大等）· 权威检测支持（Turnitin 官方 API + 多引擎）· 专业学术团队（学长导师严格执行学校规则）· 隐私安全保障（数据加密存储 100% 不泄露）· 24/7 急救支持（关键时刻牛小匠在你身边）。
+        <br/><br/>
+        <strong>牛小匠状态小组件</strong>（首页底部 4 卡 + 进度条）：一切顺利 85% / 报文档检查一下 23% 风险 / 作业拆解完成 68% / 需要帮忙？紧急（4 种 mascot 状态打通救援动线）。
+      </p>
+      <div class="tag-row">
+        <span class="tag">应急工具</span>
+        <span class="tag purple">作业拆解</span>
+        <span class="tag mint">Turnitin 检测</span>
+        <span class="tag sunshine">指控应对</span>
+        <span class="tag bubblegum">Plus 会员锁</span>
+      </div>
+      <div class="insights">
+        <span class="label">差异化亮点</span>
+        <ul>
+          <li><strong>大数字驱动焦虑→可控</strong>：23% 风险分大字 + 颜色编码进度条，让用户秒懂"我现在在哪个安全档位"</li>
+          <li>3 大功能各有自己的 <strong>3-step 上传 → AI 分析 → 结果生成</strong> 流程，统一节奏</li>
+          <li>Mascot 用法：拆解作业用 <strong>thinking + 放大镜</strong>，风险检测用 <strong>passed</strong>（戴学位帽点头），救援用 <strong>champion</strong>（戴王冠陪伴感）</li>
+          <li><strong>救援 ≠ 包过</strong>：所有页面 footer 提示「检测结果仅供参考，不能保证与学校官方结果完全一致，请遵守所在学校的学术诚信政策」</li>
+          <li>跟"选课情报局" (ref-03) 是 <strong>UniMate 双杀手锏</strong>：选课前看情报局 / 出问题用救援站</li>
+        </ul>
+      </div>
+      <code>app-design-refs/05-academic-risk-rescue.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/05-academic-risk-rescue.png" alt="UniMate AI 学术风险救援站 3 大功能 + 6 张关联页"/>
+    </div>
+  </div>
+
+  <!-- ============ 06 AI 导入课表 ============ -->
+  <div class="ref-card" id="ref-06">
+    <div class="ref-meta">
+      <span class="num">REF · 06</span>
+      <h2>AI 导入课表 <span class="accent">Timetable Import</span> <span class="tag" style="margin-left:8px; vertical-align:middle; font-size:9px;">Beta</span></h2>
+      <p class="desc">
+        新生痛点：每学期开学手动一节节录入 5-6 门课时间表太烦。<strong>一键导入 + AI 智能识别 + 30 秒-1 分钟出周视图</strong>。
+        Hero 一句话："把课表交给我，小匠帮你安排好时间！" + mascot waving。
+        <br/><br/>
+        <strong>6 步流程</strong>：
+        <br/>1. <strong>选择导入方式</strong>（4 种）：从学校系统导入（推荐 · 支持 UNSW / USYD / UQ 等）/ 上传课表文件（PDF / PNG / JPG / Excel）/ 粘贴课表文本（从邮箱/官方网站复制）/ 手动添加（少量课/临时调整）。底栏"我们仅用于识别课程信息，不会存储你的账号密码"安全承诺。
+        <br/>2. <strong>连接学校系统</strong>：5 所学校（UNSW Sydney 推荐 / Sydney / UQ / Monash / Melbourne）+ 其他学校陆续支持。数据安全保障弹窗。
+        <br/>3. <strong>选择学期</strong>：term selector "2024 年 第 1 学期 (Sem 1)" + 即将导入 stat 卡（<strong>预计课程数 4-6 门</strong> / 预计时间 1 分钟内 / 数据来源 UNSW Timetable）+ "开始导入" Coral CTA。
+        <br/>4. <strong>AI 识别中</strong>：mascot 拿放大镜环形进度条 + "请稍候，通常需要 30 秒-1 分钟" + 4-step 进度：已连接学校系统 ✓ / 正在获取课程数据 ✓ / AI 识别课程信息（当前）/ 生成课表视图。
+        <br/>5. <strong>检查并确认</strong>：3 大数字 stat（<strong>课程数 5 门 / 时间冲突 0 处 / 识别准确率 98%</strong>）+ 5 节课列表（COMP6080 / INFS3605 / MATH1131 / GENED1000 / COMP6841 各显示周几/时间/教室）+ "重新识别" / "确认导入" 双 CTA。
+        <br/>6. <strong>导入成功</strong>：完整周视图日历（周一到周五 + 8AM-6PM + 5 节课不同色块块状显示）+ mascot "课表导入成功！加油学习呀！" + 添加课程 FAB。
+        <br/><br/>
+        <strong>底部 4 USP</strong>：快速便捷（1 分钟内告别手动输入）/ 智能识别（AI 精准识别课程·时间·地点 准确率 98%）/ 安全可靠（只获取课表信息保护隐私）/ 自动优化（检测时间冲突帮你优化）。
+      </p>
+      <div class="tag-row">
+        <span class="tag">新生引导</span>
+        <span class="tag purple">学校系统 OAuth</span>
+        <span class="tag mint">98% 识别准确</span>
+        <span class="tag sunshine">周视图日历</span>
+        <span class="tag bubblegum">Beta</span>
+      </div>
+      <div class="insights">
+        <span class="label">设计关键</span>
+        <ul>
+          <li><strong>4 种导入方式按"自动 → 半自动 → 手动"梯度排</strong>，推荐用学校系统但有 fallback，照顾不同学校的可用性</li>
+          <li>第 4 屏 loading 不空着 — <strong>放大镜 mascot + 4-step 进度</strong>给用户"有事在做"的反馈，覆盖 30s-1min 等待</li>
+          <li>第 5 屏导入完<strong>必须给用户确认环节</strong>，3 大数字直观（98% 准确率 + 0 冲突 + 5 课），不是 AI 黑盒一把梭</li>
+          <li>第 6 屏成功态用 <strong>周视图（非列表）</strong>给用户"哇 看起来真像课表"的成就感 — 跟 Apple Calendar 同款视觉锚</li>
+          <li>UNSW 排第一 = UniMate 的 first-mover 校园，跟 ref-02 登录 UNSW 学号优先一致</li>
+        </ul>
+      </div>
+      <code>app-design-refs/06-ai-timetable-import.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/06-ai-timetable-import.png" alt="UniMate AI 导入课表 6 步流程"/>
+    </div>
+  </div>
+
+  <!-- ============ 07 牛圈 · 校园 Feed ============ -->
+  <div class="ref-card" id="ref-07">
+    <div class="ref-meta">
+      <span class="num">REF · 07</span>
+      <h2>牛圈 <span class="accent">Campus Feed</span></h2>
+      <p class="desc">
+        UniMate 的"<strong>校园社交聚合 hub</strong>"—— 跟选课情报局 (ref-03 偏 Tutor 评分 / 选课) 完全不同，<strong>牛圈是把活动 / 热门课程 / 校园 UGC / 学习搭子混合的一站式 feed</strong>。底部 Tab Bar 中央 emphasis 是「AI 课代表」，「牛圈」是右起第二个 tab。
+        <br/><br/>
+        <strong>顶部 5 tabs</strong>：推荐（默认）/ 活动 / 课程 / 社区 / 搭子 + 学校切换器（UNSW Sydney ✓）。
+        <br/><br/>
+        <strong>5 大功能模块</strong>：
+        <br/>1. <strong>你的 AI 校园助手</strong>（Hero）— mascot 挥手 + 3 智能推荐（COMP6080 本周热度 ↑23% / 推荐活动 AI Career Night / 3 位同学正在附近自习）+ 今日课程窗口
+        <br/>2. <strong>🔥 本周精选活动</strong> — 主 banner (AI Career Night 悉尼歌剧院夜景 256 人感兴趣) + 2 小卡（Study with Me / Food Truck Festival 进行中 / 报名中状态 chip）
+        <br/>3. <strong>👑 本周牛课榜</strong> — Top 3 课程（COMP6080 #1 ↑23% / MATH1081 #2 ↓5% / COMP1521 #3 ↑12%）+ 评分 + 在学人数 + "去看看" CTA
+        <br/>4. <strong>新生第一周任务</strong>（3/5 已完成 60%）+ <strong>今日校园动态</strong>（Lily Chen 学姐 UGC 帖："刚在图书馆捡到一张学生卡，失主请联系我~"）
+        <br/>5. <strong>推荐学习搭子</strong> — 3 个同学 cards（Jessica Wu COMP6080 研二 在线 + Kevin Li MATH1081 + Sophie Zhang COMP1521）"换一批" 刷新
+        <br/><br/>
+        <strong>📱 同时支持 mobile + iPad/wider</strong> 两种 layout：mobile 是单列堆叠，wider 把活动 banner 横向 3 列 + 新生任务 / 牛课榜并排，AI Career Night 主图 + Arc Club Welcome BBQ + UNSW Basketball Tryouts 2024 三张 event card 一屏可见。学习搭子也从 1 列变 3 列。
+      </p>
+      <div class="tag-row">
+        <span class="tag">校园 Feed</span>
+        <span class="tag purple">活动聚合</span>
+        <span class="tag mint">学习搭子</span>
+        <span class="tag sunshine">UGC 动态</span>
+        <span class="tag bubblegum">Responsive</span>
+      </div>
+      <div class="insights">
+        <span class="label">差异化 / 跟 ref-03 的区别</span>
+        <ul>
+          <li><strong>牛圈 (ref-07)</strong> = "校园生活聚合" / 偏发现 + 社交 + 活动报名；<strong>选课情报局 (ref-03)</strong> = "选课决策工具" / 偏 Tutor 评分 + 水课榜 + 投票广场。两者都在 UniMate 但是<strong>不同 tab</strong>，互不替代。</li>
+          <li>底部 5 tab：首页 / 课表 / <strong>AI 课代表（中央 emphasis）</strong> / 牛圈 / 我的 — AI 课代表才是产品锚点，牛圈是社交粘性</li>
+          <li>Mascot 在 Hero 用 <strong>default 挥手版</strong>（hoodie + AI 字标 = 牛小匠校园助手身份）；新生任务区用 <strong>inspecting 放大镜</strong>（侦查 ToDo）</li>
+          <li><strong>本地化锚定</strong>：所有内容默认 UNSW Sydney + Tyree Room / 图书馆 / Quadrangle 等真实地标，强化"我们懂你学校"</li>
+          <li>活动 card 分类用 chip：<span class="tag" style="font-size:9px;padding:2px 8px">Career</span> <span class="tag mint" style="font-size:9px;padding:2px 8px">Social</span> <span class="tag sunshine" style="font-size:9px;padding:2px 8px">Sports</span> 等 — 视觉区分活动类型</li>
+        </ul>
+      </div>
+      <code>app-design-refs/07-niu-quan-campus-feed.png · 07b-niu-quan-ipad.png</code>
+    </div>
+    <div class="ref-frame wide" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; padding:14px">
+      <div style="text-align:center">
+        <img src="assets/app-design-refs/07-niu-quan-campus-feed.png" alt="UniMate 牛圈 · mobile 单列" style="max-width:100%; max-height:600px"/>
+        <div style="font-size:11px; color:var(--um-slate); margin-top:8px; font-family:'JetBrains Mono', monospace">📱 Mobile · 单列堆叠</div>
+      </div>
+      <div style="text-align:center">
+        <img src="assets/app-design-refs/07b-niu-quan-ipad.png" alt="UniMate 牛圈 · iPad / wider 横向" style="max-width:100%; max-height:600px"/>
+        <div style="font-size:11px; color:var(--um-slate); margin-top:8px; font-family:'JetBrains Mono', monospace">📱 iPad / Wider · 3 列横向</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Footer ============ -->
+  <div class="footer">
+    <p>
+      看完想动手？回到 <a href="index.html">品牌手册</a> 看 <code>--um-*</code> token / 组件规范 / 完整 mascot 体系
+      <br/>UniMate AI 跟 <a href="../cert-master/index.html">考证匠</a> / <a href="../job-hunter/index.html">求职匠</a> 三方品牌严格隔离 — 见 <a href="DESIGN.md">DESIGN.md §13 隔离规则</a>。
+    </p>
+    <p style="margin-top:14px;">
+      <span class="accent">Smarter Study, Better Future ✨</span>
+      <br/><span style="color: var(--um-slate); font-size: 11px;">UniMate AI · 你的大学 AI 学习伙伴 · v0.2 · 2026-05-14</span>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

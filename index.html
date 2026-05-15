@@ -646,9 +646,148 @@
       color: var(--um-coral); font-weight: var(--um-fw-extrabold); font-size: 18px;
     }
     .bg-dont img { height: 36px; width: auto; opacity: 0.95; }
+
+    /* —— Cross-doc sticky nav (链 app-design-refs.html) —— */
+    .um-sticky-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 254, 247, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(31,27,45,0.08);
+      display: flex; align-items: center; gap: 14px;
+      margin: 0;
+    }
+    .um-sticky-nav .um-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 14px; color: var(--um-ink);
+    }
+    .um-sticky-nav .um-brand img { width: 32px; height: 32px; border-radius: 50%; box-shadow: var(--um-shadow-sm); }
+    .um-sticky-nav .um-brand .label-zh { font-family: var(--um-font-accent); font-size: 18px; color: var(--um-coral); margin-left: 2px; }
+    .um-sticky-nav .um-nav-links { display: flex; gap: 6px; margin-left: auto; }
+    .um-sticky-nav .um-nav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--um-radius-full);
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      transition: transform var(--um-dur-hover), background var(--um-dur-hover);
+    }
+    .um-sticky-nav .um-nav-link.current {
+      background: var(--um-coral); color: var(--um-white);
+      box-shadow: 0 6px 16px rgba(255,122,102,0.32);
+    }
+    .um-sticky-nav .um-nav-link.subtle { background: var(--um-wash-coral); color: var(--um-coral); }
+    .um-sticky-nav .um-nav-link.subtle:hover { background: var(--um-coral); color: var(--um-white); transform: translateY(-1px); }
+    @media (max-width: 700px) {
+      .um-sticky-nav { gap: 8px; padding: 10px 16px; }
+      .um-sticky-nav .um-brand .label { display: none; }
+      .um-sticky-nav .um-brand .label-zh { display: none; }
+      .um-sticky-nav .um-nav-link { padding: 6px 12px; font-size: 12px; }
+    }
+
+    /* —— App design refs callout (link to app-design-refs.html) —— */
+    .app-refs-callout {
+      background: linear-gradient(135deg, var(--um-wash-coral) 0%, var(--um-wash-sunshine) 100%);
+      border: 2px solid var(--um-coral);
+      border-radius: var(--um-radius-lg);
+      padding: 28px 32px;
+      margin: 32px auto;
+      max-width: 1200px;
+      box-shadow: var(--um-shadow-md);
+    }
+    .app-refs-callout .header-row {
+      display: flex; align-items: center; gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .app-refs-callout .kicker {
+      background: var(--um-coral); color: var(--um-white);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--um-radius-full);
+      letter-spacing: 0.08em;
+    }
+    .app-refs-callout h2 {
+      margin: 0; font-size: 26px; font-weight: 800;
+      color: var(--um-ink); letter-spacing: -0.3px;
+    }
+    .app-refs-callout h2 .accent {
+      font-family: var(--um-font-accent);
+      color: var(--um-coral); font-size: 1.1em;
+    }
+    .app-refs-callout p.lead {
+      margin: 0 0 18px; font-size: 14px;
+      color: var(--um-ink-soft); line-height: var(--um-lh-relaxed);
+    }
+    .app-refs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .app-refs-grid a {
+      background: var(--um-white);
+      border-radius: var(--um-radius-md);
+      box-shadow: var(--um-shadow-sm);
+      padding: 12px;
+      text-decoration: none;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: all var(--um-dur-card);
+    }
+    .app-refs-grid a:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--um-shadow-md);
+    }
+    .app-refs-grid .thumb {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--um-canvas);
+      border-radius: var(--um-radius-sm);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-refs-grid .thumb img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+    }
+    .app-refs-grid .meta {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .app-refs-grid .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 700;
+      color: var(--um-coral);
+      letter-spacing: 0.05em;
+    }
+    .app-refs-grid .title {
+      font-size: 13px; font-weight: 700;
+      color: var(--um-ink);
+    }
+    .app-refs-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px;
+      background: var(--um-coral); color: var(--um-white);
+      border-radius: var(--um-radius-full);
+      font-size: 14px; font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(255,122,102,0.4);
+      transition: transform var(--um-dur-hover);
+    }
+    .app-refs-cta:hover { transform: translateY(-2px); }
   </style>
 </head>
 <body>
+
+  <!-- ═════════════════════════ STICKY NAV (cross-doc) ═════════════════════════ -->
+  <nav class="um-sticky-nav">
+    <span class="um-brand">
+      <img src="assets/logo/avatar.png" alt=""/>
+      <span class="label">UniMate AI</span>
+      <span class="label-zh">牛小匠</span>
+    </span>
+    <div class="um-nav-links">
+      <a href="index.html" class="um-nav-link current">🎨 品牌手册</a>
+      <a href="app-design-refs.html" class="um-nav-link subtle">📱 App 设计稿 →</a>
+    </div>
+  </nav>
 
   <!-- ═════════════════════════ HERO ═════════════════════════ -->
   <header class="hero">
@@ -664,6 +803,49 @@
       </div>
     </div>
   </header>
+
+  <!-- ═════════════════════════ APP 设计稿 入口 callout ═════════════════════════ -->
+  <section class="app-refs-callout">
+    <div class="header-row">
+      <span class="kicker">📱 APP DESIGN</span>
+      <h2>App 设计稿参考 <span class="accent">已上 7 张</span></h2>
+    </div>
+    <p class="lead">
+      7 张完整 mobile/iPad 设计稿（首页 / 登录注册 / <strong>选课情报局</strong> / 核心功能 / <strong>学术风险救援站</strong> / AI 导入课表 / <strong>牛圈 · 校园 Feed</strong>）
+      —— 团队对齐 mascot 用法 / 排版 / 信息架构。点缩略图直接跳到对应章节。
+    </p>
+    <div class="app-refs-grid">
+      <a href="app-design-refs.html#ref-01">
+        <div class="thumb"><img src="assets/app-design-refs/01-home.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 01</span><span class="title">首页 Home</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-02">
+        <div class="thumb"><img src="assets/app-design-refs/02-auth.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 02</span><span class="title">登录 / 注册</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-03">
+        <div class="thumb"><img src="assets/app-design-refs/03-course-intel-community.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 03</span><span class="title">选课情报局 ★</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-04">
+        <div class="thumb"><img src="assets/app-design-refs/04-core-features.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 04</span><span class="title">核心 App 功能</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-05">
+        <div class="thumb"><img src="assets/app-design-refs/05-academic-risk-rescue.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 05</span><span class="title">学术风险救援站 ★</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-06">
+        <div class="thumb"><img src="assets/app-design-refs/06-ai-timetable-import.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 06</span><span class="title">AI 导入课表</span></div>
+      </a>
+      <a href="app-design-refs.html#ref-07">
+        <div class="thumb"><img src="assets/app-design-refs/07-niu-quan-campus-feed.png" alt=""/></div>
+        <div class="meta"><span class="num">REF · 07</span><span class="title">牛圈 校园 Feed ⭐</span></div>
+      </a>
+    </div>
+    <a href="app-design-refs.html" class="app-refs-cta">看完整设计稿参考 → app-design-refs.html</a>
+  </section>
 
   <!-- ═════════════════════════ TOC ═════════════════════════ -->
   <nav class="toc">
@@ -686,7 +868,8 @@
     <a href="#navigation">16 Navigation</a>
     <a href="#dashboard">17 Dashboard</a>
     <a href="#voice">18 Voice</a>
-    <a href="#dos">19 Do & Don't</a>
+    <a href="#stickers">19 Stickers ⭐</a>
+    <a href="#dos">20 Do & Don't</a>
   </nav>
 
   <!-- 00 ─ LOGO SYSTEM ─────────────────────────────────────── -->
@@ -749,6 +932,36 @@
           <b>用在</b>：营销 banner / Hero illustration / 404 / Empty state / 社媒头图<br/>
           <b>最小高度</b>：240px（要看清 hoodie 细节）<br/>
           <b>文件</b>：<code>assets/logo/fullbody.png</code>
+        </div>
+      </div>
+
+      <!-- Avatar (圆头像) -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-wash-coral); border-radius:var(--um-radius-md); padding:24px; display:flex; align-items:center; justify-content:center">
+          <img src="assets/logo/avatar.png" alt="Avatar 圆头像" style="max-height:140px; border-radius:50%"/>
+        </div>
+        <div class="meta-row">
+          <span class="meta-name">Avatar · 圆头像 / Favicon</span>
+          <span class="meta-tag" style="background:var(--um-wash-bubblegum);color:#c93a87">FAVICON</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：App 头像位 / Favicon / 收藏卡 chip / 内嵌行内小图标<br/>
+          <b>最小尺寸</b>：16×16（favicon）/ 32×32（app）<br/>
+          <b>文件</b>：<code>assets/logo/avatar.png</code>
+        </div>
+      </div>
+
+      <!-- Lockup Mono ⭐ NEW (黑白单色版) -->
+      <div class="logo-card">
+        <div class="logo-stage" style="background:var(--um-white); border-radius:var(--um-radius-md); padding:24px"><img src="assets/logo/lockup-mono.png" alt="Lockup Mono 黑白单色"/></div>
+        <div class="meta-row">
+          <span class="meta-name">Lockup Mono · 黑白单色 ⭐ NEW</span>
+          <span class="meta-tag" style="background:var(--um-ink);color:var(--um-white)">MONO</span>
+        </div>
+        <div class="meta-desc">
+          <b>用在</b>：打印 / T-shirt / 灰底 / 反白场景（深色背景需反白处理）/ 任何不允许彩色 IP 露出的合作物料<br/>
+          <b>一句话规则</b>：有 Coral 配色用 horizontal，没有用 lockup-mono<br/>
+          <b>文件</b>：<code>assets/logo/lockup-mono.png</code>
         </div>
       </div>
     </div>
@@ -870,11 +1083,65 @@
       <div><div class="mascot-cell m-tired"><img src="assets/mascot/tired.png" alt="" /></div><div class="mascot-state">熬夜中 Tired</div><div class="mascot-meta">深夜 / 共情态</div></div>
       <div><div class="mascot-cell m-deadline"><img src="assets/mascot/deadline.png" alt="" /></div><div class="mascot-state">Deadline 警告</div><div class="mascot-meta">紧迫提醒 / Alert</div></div>
       <div><div class="mascot-cell m-champion" style="background:var(--um-wash-sunshine)"><img src="assets/mascot/champion.png" alt="" /></div><div class="mascot-state">满分拿下 Champion</div><div class="mascot-meta">Quiz 满分 / 成就解锁</div></div>
+      <div><div class="mascot-cell m-inspecting" style="background:var(--um-wash-coral)"><img src="assets/mascot/inspecting.png" alt="" /></div><div class="mascot-state">调查中 Inspecting ⭐</div><div class="mascot-meta">选课情报 / 风险检测 / 作业拆解</div></div>
+      <div><div class="mascot-cell m-scheduling" style="background:var(--um-wash-purple)"><img src="assets/mascot/scheduling.png" alt="" /></div><div class="mascot-state">排程 Scheduling ⭐</div><div class="mascot-meta">课表导入 / 周计划 / DDL 排程</div></div>
     </div>
 
     <div style="background:var(--um-wash-mint);padding:var(--um-space-4) var(--um-space-6);border-radius:var(--um-radius-md);margin-top:var(--um-space-6);font-size:var(--um-fs-body-sm)">
       <b>📌 风格说明</b>：主体走<b>黑白扁平 + 单色 accent</b>（蓝/红/橙）一脉相承的扁平贴纸风。唯一例外是 <b>AI 分析中</b> ——
       用了蓝色玻璃质感图表元素，是有意区分"AI 自己在工作"和"用户在思考/学习"两种场景，不是风格 bug。
+    </div>
+  </section>
+
+  <!-- 19 ─ STICKERS & DECORATIONS ─────────────────────────── -->
+  <section class="section" id="stickers">
+    <div class="section-head"><span class="section-num">19</span><span class="section-title">Stickers &amp; Decorations · 装饰资产 ⭐</span><span class="section-sub">UniMate 独有 · 一等公民</span></div>
+    <p style="font-size:var(--um-fs-body-sm); color:var(--um-ink-soft); margin-top:6px">
+      UniMate 把 sticker 当成 <b>设计系统一等公民</b>（cert-master / job-hunter 没这个）。用法见 DESIGN.md §7.2 / §7.3。
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:var(--um-space-4); margin-top:var(--um-space-6)">
+      <!-- Sticker: Let's study! -->
+      <div style="background:var(--um-white); border:1px solid rgba(31,27,45,0.08); border-radius:var(--um-radius-md); padding:var(--um-space-4); display:flex; flex-direction:column; gap:var(--um-space-3)">
+        <div style="background:var(--um-canvas); border-radius:var(--um-radius-sm); padding:var(--um-space-4); display:flex; align-items:center; justify-content:center; min-height:160px">
+          <img src="assets/stickers/lets-study.png" alt="Let's study sticker" style="max-height:120px; max-width:100%"/>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <div style="font-weight:700; font-size:var(--um-fs-body-sm)">Let's Study! · 黄底便利贴</div>
+          <div style="font-size:11px; color:var(--um-slate); line-height:1.6">
+            <b>用在</b>：Hero 角落点缀 / 启动 CTA / 完课鼓励<br/>
+            <b>特征</b>：粉色胶带固定 + 笑脸 + 闪光 + Caveat 手写体<br/>
+            <b>文件</b>：<code>assets/stickers/lets-study.png</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decoration: Curly arrow -->
+      <div style="background:var(--um-white); border:1px solid rgba(31,27,45,0.08); border-radius:var(--um-radius-md); padding:var(--um-space-4); display:flex; flex-direction:column; gap:var(--um-space-3)">
+        <div style="background:var(--um-canvas); border-radius:var(--um-radius-sm); padding:var(--um-space-4); display:flex; align-items:center; justify-content:center; min-height:160px">
+          <img src="assets/decorations/arrow-curly.png" alt="Curly arrow decoration" style="max-height:120px; max-width:100%"/>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <div style="font-weight:700; font-size:var(--um-fs-body-sm)">Arrow Curly · 手绘扭曲箭头</div>
+          <div style="font-size:11px; color:var(--um-slate); line-height:1.6">
+            <b>用在</b>：指向下一步 CTA / 强调某条信息 / "看这里！"装饰<br/>
+            <b>特征</b>：Coral `#FF7A66` 单色手绘 + 末端打圈<br/>
+            <b>文件</b>：<code>assets/decorations/arrow-curly.png</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live demo combo: arrow + sticker pointing to mascot -->
+      <div style="grid-column: span 2; background:var(--um-canvas); border:1px dashed rgba(31,27,45,0.15); border-radius:var(--um-radius-md); padding:var(--um-space-6); position:relative; min-height:200px; display:flex; align-items:center; justify-content:center; gap:var(--um-space-4); flex-wrap:wrap">
+        <img src="assets/stickers/lets-study.png" alt="" style="height:90px; transform:rotate(-8deg)"/>
+        <img src="assets/decorations/arrow-curly.png" alt="" style="height:80px; transform:rotate(-12deg)"/>
+        <img src="assets/mascot/default.png" alt="" style="height:130px"/>
+        <div style="position:absolute; bottom:8px; right:14px; font-size:10px; color:var(--um-slate); font-family:'JetBrains Mono', monospace">▲ 实战组合：sticker + arrow 引导用户视线到 mascot CTA</div>
+      </div>
+    </div>
+
+    <div style="background:var(--um-wash-coral);padding:var(--um-space-4) var(--um-space-6);border-radius:var(--um-radius-md);margin-top:var(--um-space-6);font-size:var(--um-fs-body-sm)">
+      <b>🚨 sticker 红线</b>：永远带 <code>--um-shadow-sticker</code> 硬偏移阴影（4px 4px 0）+ 白色 outline 边 + Caveat 字体；一屏 <b>≤ 3 个 sticker</b>，否则视觉过载；不要把 sticker 当装饰反复重复。
     </div>
   </section>
 

@@ -10,12 +10,17 @@
 ```
 unimate-ai/
 ├── index.html              ← 品牌手册（19 sections，双击打开就能看）
+├── app-design-refs.html    ← App 设计稿参考（4 张 mobile mockup，sticky-nav 跟 index 互链）
+├── DESIGN.md               ← 完整设计规范
 ├── tokens/
 │   ├── tokens.json         ← Design tokens 源数据（Style Dictionary 兼容）
 │   └── tokens.css          ← CSS Variables，任何项目 import 即可用
-└── assets/mascot/
-    ├── default.png         ← 牛小匠主形象
-    └── spec-sheet.png      ← 完整 spec 图（设计参考）
+└── assets/
+    ├── logo/               ← 6 件套（horizontal / lockup-mono ⭐ / app-icon / avatar / compact / fullbody）
+    ├── mascot/             ← 11 状态（default=waving / studying / thinking / ai-analyzing / charging / tired / deadline / champion / inspecting⭐ / scheduling⭐ / happy 占位中）+ spec-sheet
+    ├── stickers/           ← lets-study 便利贴
+    ├── decorations/        ← arrow-curly 手绘箭头
+    └── app-design-refs/    ← App 设计稿 6 张（home / auth / course-intel / core-features / academic-rescue / timetable-import）
 ```
 
 ---

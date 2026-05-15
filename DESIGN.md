@@ -98,7 +98,7 @@
 
 | State | 中文名 | 视觉特征 | 触发场景 | 文件 |
 |-------|--------|---------|---------|------|
-| `default` | 默认 | 牛小匠正面站立 / 微笑 | 默认头像 / 空场景 | `assets/mascot/default.png` |
+| `default` | 默认 / 挥手 | 牛小匠 hoodie + 墨镜 + 单手挥手 wave | 默认头像 / 空场景 / 打招呼 / Hero | `assets/mascot/default.png`（=`waving.png`） |
 | `happy` | 开心 | 笑眼 + 双手举起 + 庆祝姿势 | 完成任务 / 抽中 / 解锁 | `assets/mascot/happy.png` _(占位中)_ |
 | `studying` | 学习中 | 戴眼镜 + 翻书 / 笔记本 | 课程进行中 / 答题中 | `assets/mascot/studying.png` |
 | `thinking` | 思考中 | 手托腮 + 头顶问号 | 空状态 / loading / 「想想？」 | `assets/mascot/thinking.png` |
@@ -107,6 +107,8 @@
 | `tired` | 累了 | 黑眼圈 + 颓废 + 坐地上 | 连续刷题过久 / 提醒休息 | `assets/mascot/tired.png` |
 | `deadline` | Deadline 战神 | 怒眼 + 火焰 + 冲刺 | due 24h / 紧急 streak | `assets/mascot/deadline.png` |
 | `champion` | 满分拿下 | 皇冠 + 金牌 + 100 分 | 满分 / 全通过 / 排行榜首 | `assets/mascot/champion.png` |
+| `inspecting` ⭐ NEW | 调查中 | 单手举放大镜 + 眯眼 + Coral hoodie | **选课情报局** / **学术风险检测** / 作业拆解 / 错题排查 | `assets/mascot/inspecting.png` |
+| `scheduling` ⭐ NEW | 排程 / 课表 | 指日历 + 9 色块 + 大绿勾 + 闪光 | **AI 导入课表成功** / 周计划生成 / DDL 排程 / 课表同步 | `assets/mascot/scheduling.png` |
 
 ### 3.3 选择决策树
 
@@ -128,6 +130,16 @@
 │
 ├── 紧急 / 倒计时
 │   └── due 24h / streak ≥7 天 → deadline
+│
+├── 调查 / 审查 ⭐
+│   ├── 选课情报局 / 水课榜 / Tutor 评分 → inspecting
+│   ├── 学术风险检测 / Turnitin 报告 → inspecting
+│   └── 作业拆解 / 错题排查 → inspecting
+│
+├── 排程 / 课表 ⭐
+│   ├── AI 导入课表成功 → scheduling
+│   ├── 周计划生成 / DDL 排程 → scheduling
+│   └── 课表同步 / 课节冲突解决 → scheduling
 │
 └── 不知道用哪个 → default
 ```
@@ -332,15 +344,18 @@ UniMate 偏好"更圆"，所以 `lg` 是 24px（Cert Master 是 16px），有更
 
 ## 7. Logo & Sticker
 
-### 7.1 Logo 5 件套
+### 7.1 Logo 件套（6 件）
 
 | 名称 | 文件 | 用途 |
 |------|------|------|
-| Horizontal | `assets/logo/horizontal.png` | 官网 header / 邮件签名 / 横向窄区域 |
+| Horizontal | `assets/logo/horizontal.png` | 官网 header / 邮件签名 / 横向窄区域（彩色版） |
+| **Lockup Mono** ⭐ NEW | `assets/logo/lockup-mono.png` | 黑白单色横排：mascot 头像 + 「牛小匠课代表」黑字 — **打印 / 灰底 / 单色场景** |
 | Compact | `assets/logo/compact.png` | 海报 / PPT / App 启动屏 |
 | Avatar | `assets/logo/avatar.png` | App 图标位 / 头像 / 收藏卡 |
 | Fullbody | `assets/logo/fullbody.png` | Hero / banner 大场景 |
 | App Icon | `assets/logo/app-icon.png` | 通用 App 图标 |
+
+> **Lockup Mono 使用场景**：印 T-shirt / 贴纸 / 黑白文档头部 / 反白底（深色背景需先反白处理）/ 任何不允许彩色 IP 露出的合作物料。一句话：**有 Coral 配色用 horizontal，没有用 lockup-mono**。
 
 ### 7.2 Sticker — 一等公民
 
