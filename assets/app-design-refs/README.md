@@ -25,13 +25,19 @@
 |------|-------------|
 | 首页 Hero | `studying`（笔记本前学习） |
 | 等级进度 / 升级 | `champion`（戴学位帽 / 满分） |
-| DDL 倒计时 | `anxious` / `sprint`（火焰款 — 紧迫感） |
+| DDL 倒计时 | `deadline`（火焰款 — 紧迫感） |
 | AI 助手聊天 | `ai-analyzing`（扫描眼） |
-| 复习卡片 | `studying`（拿书） |
-| 登录注册 hero | `happy`（挥手 / waving） |
-| 我的 / Profile 主页 | `happy`（不要焦虑感） |
+| 复习卡片 | `studying` / `note-taking`（橙 hoodie 拿小本本） |
+| 登录注册 hero | `welcome`（白 AI hoodie + 单肩书包 + 挥手） |
+| 我的 / Profile 主页 | `default`（挥手） |
+| **DDL 列表 / 今日 To-Do** ⭐ | `checklist`（拿 clipboard 三红勾） |
+| **不知道选什么课 / 路径规划** ⭐ | `exploring`（摊地图 + ?） |
+| **排行榜 #1 / Bootcamp 毕业** ⭐ | `winner`（全身奶牛纹 + 奖杯） |
+| **App 通知 / 牛圈新评论** ⭐ | `notify`（探出 Coral 气泡 + "2"） |
+| **新功能 banner / 活动 hero** ⭐ | `announce`（喊喇叭 + 闪电） |
+| **GPA 进步 / 学术救援成功** ⭐ | `gpa-up`（皇冠 + GPA UP↑ 牌） |
 
-完整 mascot 决策树 → `../../DESIGN.md` §3。
+完整 mascot 决策树（19 态）→ `../../DESIGN.md` §3。
 
 ---
 

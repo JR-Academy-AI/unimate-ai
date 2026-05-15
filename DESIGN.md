@@ -94,7 +94,7 @@
 **牛小匠** — 圆胖小公牛。橙黄牛角 / 大眼睛 / 偶尔戴书本 / 偶尔背书包。
 单线条 + 平涂色 + 表情夸张（学生表情包风格）。
 
-### 3.2 9 个标准态（禁止自创）
+### 3.2 19 个标准态（禁止自创）
 
 | State | 中文名 | 视觉特征 | 触发场景 | 文件 |
 |-------|--------|---------|---------|------|
@@ -107,8 +107,16 @@
 | `tired` | 累了 | 黑眼圈 + 颓废 + 坐地上 | 连续刷题过久 / 提醒休息 | `assets/mascot/tired.png` |
 | `deadline` | Deadline 战神 | 怒眼 + 火焰 + 冲刺 | due 24h / 紧急 streak | `assets/mascot/deadline.png` |
 | `champion` | 满分拿下 | 皇冠 + 金牌 + 100 分 | 满分 / 全通过 / 排行榜首 | `assets/mascot/champion.png` |
-| `inspecting` ⭐ NEW | 调查中 | 单手举放大镜 + 眯眼 + Coral hoodie | **选课情报局** / **学术风险检测** / 作业拆解 / 错题排查 | `assets/mascot/inspecting.png` |
-| `scheduling` ⭐ NEW | 排程 / 课表 | 指日历 + 9 色块 + 大绿勾 + 闪光 | **AI 导入课表成功** / 周计划生成 / DDL 排程 / 课表同步 | `assets/mascot/scheduling.png` |
+| `inspecting` | 调查中 | 单手举放大镜 + 眯眼 + Coral hoodie | **选课情报局** / **学术风险检测** / 作业拆解 / 错题排查 | `assets/mascot/inspecting.png` |
+| `scheduling` | 排程 / 课表 | 指日历 + 9 色块 + 大绿勾 + 闪光 | **AI 导入课表成功** / 周计划生成 / DDL 排程 / 课表同步 | `assets/mascot/scheduling.png` |
+| `welcome` ⭐ NEW | 欢迎 / 新生入学 | 墨镜 + 白 AI hoodie + 单肩书包 + 挥手 + 闪光 | **第一次启动 / Onboarding hi** / 新学期欢迎页 / 引导教程 | `assets/mascot/welcome.png` |
+| `checklist` ⭐ NEW | 任务清单 | 墨镜 + 拿 clipboard + 三红勾 + 铅笔 + 书包 | **DDL 列表** / 今日 To-Do / 任务回顾 / 周报检查 | `assets/mascot/checklist.png` |
+| `exploring` ⭐ NEW | 找方向 / 探路 | 墨镜 + 摊地图 + 红色路径 + 头顶 ? | **不知道选什么课** / 路径规划 / 校园找路 / 选专业犹豫 | `assets/mascot/exploring.png` |
+| `winner` ⭐ NEW | 冠军全身 | 全身奶牛纹 + 高举奖杯 + 墨镜 | 排行榜 #1 / Bootcamp 毕业 / 期末满分 / 大型成就页 | `assets/mascot/winner.png` |
+| `note-taking` ⭐ NEW | 记笔记 | 橙 U hoodie + 张嘴大笑 + 拿小本本 + 铅笔 | **课中记笔记** / 听讲座 / 头脑风暴 / 复习卡 | `assets/mascot/note-taking.png` |
+| `notify` ⭐ NEW | 新消息提示 | 探出 Coral 对话气泡 + 红色 "2" 角标 + 眨眼 | **App 通知** / 牛圈新评论 / 私信徽标 / Push 横幅 | `assets/mascot/notify.png` |
+| `announce` ⭐ NEW | 公告 / 广播 | 橙 U hoodie + 喊喇叭 + 闪电符号 | **公告横幅** / 新功能上线 / 营销推送 / 活动 banner | `assets/mascot/announce.png` |
+| `gpa-up` ⭐ NEW | GPA 提升 | 皇冠 + 墨镜 + 举 "GPA UP↑" 牌 + 满天闪光 | **成绩进步页** / 期末 GPA 上涨 / 学术救援站成功复盘 | `assets/mascot/gpa-up.png` |
 
 ### 3.3 选择决策树
 
@@ -131,15 +139,50 @@
 ├── 紧急 / 倒计时
 │   └── due 24h / streak ≥7 天 → deadline
 │
-├── 调查 / 审查 ⭐
+├── 调查 / 审查
 │   ├── 选课情报局 / 水课榜 / Tutor 评分 → inspecting
 │   ├── 学术风险检测 / Turnitin 报告 → inspecting
 │   └── 作业拆解 / 错题排查 → inspecting
 │
-├── 排程 / 课表 ⭐
+├── 排程 / 课表
 │   ├── AI 导入课表成功 → scheduling
 │   ├── 周计划生成 / DDL 排程 → scheduling
 │   └── 课表同步 / 课节冲突解决 → scheduling
+│
+├── 第一次见面 / Onboarding ⭐
+│   ├── 第一次启动 / 新学期欢迎页 → welcome
+│   └── 引导教程 hero → welcome
+│
+├── 任务清单 / To-Do ⭐
+│   ├── DDL 列表 / 今日待办 → checklist
+│   ├── 周报 / 任务回顾 → checklist
+│   └── 完成度统计页 → checklist
+│
+├── 不知道选什么 / 找方向 ⭐
+│   ├── 选课犹豫 / 选专业犹豫 → exploring
+│   ├── 校园找路 / 第一周地图 → exploring
+│   └── 路径规划空状态 → exploring
+│
+├── 重大成就 / 全身款 ⭐
+│   ├── 排行榜 #1 / Bootcamp 毕业 → winner
+│   └── 期末满分 / 年度报告 hero → winner
+│
+├── 记笔记 / 听讲 ⭐
+│   ├── 课中笔记 / 复习卡 → note-taking
+│   └── 头脑风暴 / brainstorm → note-taking
+│
+├── 通知 / 消息 ⭐
+│   ├── App 通知中心 / 牛圈新消息 → notify
+│   └── Push 横幅 / 红点徽标 → notify
+│
+├── 公告 / 广播 ⭐
+│   ├── 新功能上线 banner → announce
+│   ├── 营销推送 / 活动 hero → announce
+│   └── 系统公告横幅 → announce
+│
+├── GPA / 成绩进步 ⭐
+│   ├── 学期 GPA 上涨 → gpa-up
+│   └── 学术救援成功复盘 → gpa-up
 │
 └── 不知道用哪个 → default
 ```
@@ -155,7 +198,7 @@
 
 ### 3.5 红线
 
-- ❌ 不要自创新表情（如 "结婚牛 / 喝酒牛"）— 新场景必须 map 到已有 9 态
+- ❌ 不要自创新表情（如 "结婚牛 / 喝酒牛"）— 新场景必须 map 到已有 19 态
 - ❌ 不要把牛换成其它动物（企鹅是 Cert Master 的）
 - ❌ 不要给牛改色（橙黄角不能变蓝，肚皮不能变黑）
 - ❌ 不要拉伸 / 压扁 / 倾斜
