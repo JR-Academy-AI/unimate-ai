@@ -505,10 +505,11 @@
       background: var(--um-white);
       border-radius: var(--um-radius-full);
       box-shadow: var(--um-shadow-md);
-      max-width: 380px;
+      max-width: 430px;
     }
-    .bottombar .item { display: grid; place-items: center; gap: 2px; font-size: 11px; color: var(--um-slate); }
+    .bottombar .item { display: grid; place-items: center; gap: 2px; min-width: 52px; font-size: 11px; color: var(--um-slate); }
     .bottombar .item.active { color: var(--um-coral); }
+    .bottombar .ai-item { color: var(--um-coral); font-weight: var(--um-fw-bold); }
     .bottombar .ai-fab {
       width: 56px; height: 56px;
       background: var(--um-grad-coral);
@@ -719,6 +720,46 @@
       margin: 0 0 18px; font-size: 14px;
       color: var(--um-ink-soft); line-height: var(--um-lh-relaxed);
     }
+    .app-mobile-nav-standard {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      background: var(--um-white);
+      border: 1.5px solid rgba(255,122,102,0.22);
+      border-radius: var(--um-radius-md);
+      box-shadow: var(--um-shadow-sm);
+    }
+    .app-mobile-nav-standard .label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--um-coral);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .app-mobile-nav-standard .tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .app-mobile-nav-standard .tab {
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      min-height: 56px;
+      padding: 8px 6px;
+      background: var(--um-canvas);
+      border-radius: var(--um-radius-sm);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--um-ink-soft);
+      text-align: center;
+    }
+    .app-mobile-nav-standard .tab.ai {
+      color: var(--um-coral);
+      background: var(--um-wash-coral);
+    }
+    .app-mobile-nav-standard .tab .ico { font-size: 18px; line-height: 1; }
     .app-refs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -814,6 +855,16 @@
       7 张完整 mobile/iPad 设计稿（首页 / 登录注册 / <strong>选课情报局</strong> / 核心功能 / <strong>学术风险救援站</strong> / AI 导入课表 / <strong>牛圈 · 校园 Feed</strong>）
       —— 团队对齐 mascot 用法 / 排版 / 信息架构。点缩略图直接跳到对应章节。
     </p>
+    <div class="app-mobile-nav-standard">
+      <span class="label">当前 App Mobile 底部导航标准 · 5 tabs</span>
+      <div class="tabs">
+        <div class="tab"><span class="ico">⌂</span><span>首页</span></div>
+        <div class="tab"><span class="ico">▣</span><span>课表</span></div>
+        <div class="tab ai"><span class="ico">AI</span><span>AI 课代表</span></div>
+        <div class="tab"><span class="ico">●</span><span>牛圈</span></div>
+        <div class="tab"><span class="ico">○</span><span>我的</span></div>
+      </div>
+    </div>
     <div class="app-refs-grid">
       <a href="app-design-refs.html#ref-01">
         <div class="thumb"><img src="assets/app-design-refs/01-home.png" alt=""/></div>
@@ -1454,7 +1505,7 @@
     <div class="topbar" style="margin-bottom:32px">
       <div class="lockup"><img src="assets/mascot/default.png" alt=""/>UniMate AI</div>
       <nav>
-        <a class="active">首页</a><a>课程</a><a>工具</a><a>社区</a>
+        <a class="active">首页</a><a>课表</a><a>AI 课代表</a><a>牛圈</a><a>我的</a>
       </nav>
       <div class="right">
         <span style="cursor:pointer">🔍</span>
@@ -1465,9 +1516,9 @@
     <div class="btn-state-label">BOTTOM NAV (移动端) · 中间 AI FAB</div>
     <div class="bottombar">
       <div class="item active"><span style="font-size:20px">🏠</span><span>首页</span></div>
-      <div class="item"><span style="font-size:20px">📖</span><span>课程</span></div>
-      <div class="ai-fab"><img src="assets/mascot/default.png" alt=""/></div>
-      <div class="item"><span style="font-size:20px">🛠</span><span>工具</span></div>
+      <div class="item"><span style="font-size:20px">📅</span><span>课表</span></div>
+      <div class="item ai-item"><div class="ai-fab"><img src="assets/mascot/default.png" alt=""/></div><span>AI 课代表</span></div>
+      <div class="item"><span style="font-size:20px">🐮</span><span>牛圈</span></div>
       <div class="item"><span style="font-size:20px">👤</span><span>我的</span></div>
     </div>
   </section>

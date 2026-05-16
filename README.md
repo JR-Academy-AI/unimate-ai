@@ -10,7 +10,7 @@
 ```
 unimate-ai/
 ├── index.html              ← 设计系统（19 sections，双击打开就能看）
-├── app-design-refs.html    ← App 设计稿参考（4 张 mobile mockup，sticky-nav 跟 index 互链）
+├── app-design-refs.html    ← App 设计稿参考（7 张 mobile/iPad mockup，sticky-nav 跟 index 互链）
 ├── DESIGN.md               ← 完整设计规范
 ├── tokens/
 │   ├── tokens.json         ← Design tokens 源数据（Style Dictionary 兼容）

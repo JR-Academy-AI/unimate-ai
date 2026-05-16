@@ -117,6 +117,47 @@
     .warning a { color: var(--um-coral); font-weight: 700; }
     .warning a:hover { text-decoration: underline; }
 
+    .mobile-nav-standard {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--um-white);
+      border: 1.5px solid rgba(255,122,102,0.22);
+      border-radius: var(--um-radius-md);
+      box-shadow: var(--um-shadow-sm);
+    }
+    .mobile-nav-standard .label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--um-coral);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mobile-nav-standard .tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .mobile-nav-standard .tab {
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      min-height: 56px;
+      padding: 8px 6px;
+      background: var(--um-canvas);
+      border-radius: var(--um-radius-sm);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--um-ink-soft);
+      text-align: center;
+    }
+    .mobile-nav-standard .tab.ai {
+      color: var(--um-coral);
+      background: var(--um-wash-coral);
+    }
+    .mobile-nav-standard .tab .ico { font-size: 18px; line-height: 1; }
+
     .toc {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -294,8 +335,18 @@
     <p class="en">UNIMATE AI · APP DESIGN REFERENCES</p>
     <div class="warning">
       <strong>⚠️ 仅供团队对齐参考，不照搬开发</strong>
-      <br/>这 4 张是设计师产出的 App 视觉稿，给团队对齐 <strong>牛小匠 mascot 用法 / Coral 主色 / 排版调性 / 信息架构</strong>。
+      <br/>这些是设计师产出的 App 视觉稿，给团队对齐 <strong>牛小匠 mascot 用法 / Coral 主色 / 排版调性 / 信息架构</strong>。
       具体页面实现以产品 PRD 为准，UI 组件直接用 <a href="index.html">主设计系统</a> 的 token + 组件（<code>--um-*</code>）。
+    </div>
+    <div class="mobile-nav-standard">
+      <span class="label">当前 App Mobile 底部导航标准 · 5 tabs</span>
+      <div class="tabs">
+        <div class="tab"><span class="ico">⌂</span><span>首页</span></div>
+        <div class="tab"><span class="ico">▣</span><span>课表</span></div>
+        <div class="tab ai"><span class="ico">AI</span><span>AI 课代表</span></div>
+        <div class="tab"><span class="ico">●</span><span>牛圈</span></div>
+        <div class="tab"><span class="ico">○</span><span>我的</span></div>
+      </div>
     </div>
     <div class="toc">
       <a href="#ref-01"><span class="num">01</span>首页 · Home</a>
@@ -406,7 +457,7 @@
           <li><strong>"水滴"作为投票货币</strong> = UniMate 独有 metaphor，不用通用 ❤️ / 👍</li>
           <li>Tutor 评分 4 维度（给分宽松 / 友善 / 回复速度 / 讲课清晰）= 学生真实关注点</li>
           <li>牛小匠多以 <strong>thinking / studying / sprint</strong> 状态出现，覆盖"分析数据 / 学习中 / 冲刺投票"全场景</li>
-          <li>底部固定 Tab：首页 / 社区 / + (发帖 FAB Coral) / 消息 / 我的</li>
+          <li>底部固定 Tab 遵循全局 App Mobile 5 tab：首页 / 课表 / <strong>AI 课代表</strong> / 牛圈 / 我的；发帖入口放在牛圈页内，不占全局 Tab。</li>
         </ul>
       </div>
       <code>app-design-refs/03-course-intel-community.png</code>
